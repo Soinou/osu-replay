@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.iced",
   "scripts": {
-    "postinstall": "node node_modules/bower/bin/bower install",
+    "postinstall": "cp .env.example .env && node node_modules/bower/bin/bower install",
     "start": "node node_modules/iced-coffee-script/bin/coffee index.iced"
   },
   "author": "",

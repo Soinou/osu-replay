@@ -4,23 +4,21 @@
   "description": "",
   "main": "index.iced",
   "scripts": {
-    "postinstall": "./node_modules/.bin/bower install",
-    "start": "./node_modules/.bin/iced index.iced"
+    "postinstall": "./node_modules/bower/bin/bower install",
+    "start": "./node_modules/iced-coffee-script/bin/coffee index.iced"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.14.2",
+    "bower": "^1.7.7",
     "collections": "^3.0.0",
     "dotenv": "^2.0.0",
     "express": "^4.13.4",
+    "iced-coffee-script": "^108.0.9",
     "jade": "^1.11.0",
     "mongoose": "4.4.1",
     "morgan": "^1.6.1",
     "multer": "^1.1.0"
-  },
-  "devDependencies": {
-    "bower": "^1.7.7",
-    "iced-coffee-script": "^108.0.9"
   }
 }

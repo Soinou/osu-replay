@@ -1,0 +1,17 @@
+# Node modules
+node_modules
+
+# Bower components
+public/bower_components
+
+# Uploads except the gitkeep
+public/uploads/*
+!public/uploads/.gitkeep
+
+# Configurated .env
+.env
+
+# Project files and things like that
+jsconfig.json
+typings
+typings.json

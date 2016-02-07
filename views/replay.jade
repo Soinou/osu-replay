@@ -1,0 +1,16 @@
+extends layouts/app
+
+block title
+    title #{replay.title} - osu!replay
+
+block content
+
+    .panel.panel-default
+        .panel-heading
+            h3.panel-title Replay #{replay.id}
+        .panel-body
+            ul
+                li Title: #{replay.title}
+                li Description: #{replay.description}
+                li Link:
+                    a(href="#{replay.link}")  Download

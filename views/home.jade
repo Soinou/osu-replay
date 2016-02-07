@@ -1,0 +1,13 @@
+extends layouts/app
+
+include mixins/forms
+
+block title
+    title Upload a new replay - osu!replay
+
+block content
+    +form("/replay", "POST", "multipart/form-data")
+        +text("replay_title", "title", "Title")
+        +text("replay_description", "description", "Description")
+        +file("replay_file", "file", "File")
+        +submit("Upload")

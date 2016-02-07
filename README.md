@@ -1,1 +1,2 @@
-# osu-replay
+# osu!replay
+

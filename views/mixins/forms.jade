@@ -1,0 +1,21 @@
+mixin form(action, method, enctype)
+    form(action=action, method=method, enctype=enctype)
+        block
+
+mixin text(id, name, label)
+    .form-group
+        label(for=id)= label
+        input.form-control(type="text" id=id name=name)
+
+mixin text_area(id, name, label, rows)
+    .form-group
+        label(for=id)= label
+        textarea.form-control(id=id name=name rows=rows)
+
+mixin file(id, name, label)
+    .form-group
+        label(for=id)= label
+        input.form-control(type="file" id=id name=name)
+
+mixin submit(value)
+    button.btn.btn-success(type="submit")= value

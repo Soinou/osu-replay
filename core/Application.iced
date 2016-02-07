@@ -62,8 +62,12 @@ module.exports = class Application
             process.env.DB_PORT,
             process.env.DB_PATH
 
+        console.log "Connecting to the db at the url: " + url
+
         mongoose.connect url, (err) =>
-            throw err if err
+            if err
+                console.log err
+                throw err
 
             @_app.listen process.env.PORT || 5000, () ->
                 console.log "osu-replay started"

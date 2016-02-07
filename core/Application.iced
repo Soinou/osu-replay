@@ -1,5 +1,5 @@
 bodyParser = require "body-parser"
-Dict = require "collections/Dict"
+Dict = require "collections/dict"
 dotenv = require "dotenv"
 express = require "express"
 fs = require "fs"

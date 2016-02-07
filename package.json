@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.iced",
   "scripts": {
-    "postinstall": "./node_modules/bower/bin/bower install",
-    "start": "./node_modules/iced-coffee-script/bin/coffee index.iced"
+    "postinstall": "node node_modules/bower/bin/bower install",
+    "start": "node node_modules/iced-coffee-script/bin/coffee index.iced"
   },
   "author": "",
   "license": "MIT",

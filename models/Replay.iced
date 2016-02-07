@@ -1,10 +1,12 @@
 mongoose = require "mongoose"
 
-schema = mongoose.Schema
-    id: String,
-    title: String,
-    description: String
+module.exports = (app) ->
 
-schema.virtual("link").get -> "/uploads/" + this.id + ".osr"
+    schema = mongoose.Schema
+        id: String,
+        title: String,
+        description: String
 
-module.exports = mongoose.model "Replay", schema
+    schema.virtual("link").get -> app.link this.id + ".osr"
+
+    mongoose.model "Replay", schema

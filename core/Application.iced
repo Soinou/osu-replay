@@ -49,7 +49,7 @@ module.exports = class Application
         for file in fs.readdirSync directory
             name = path.basename(file, ".iced")
             model = require directory + file
-            @_models.set name, model
+            @_models.set name, model this
             @info "Model \"" + name + "\" loaded"
 
     # Loads controllers

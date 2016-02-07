@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.iced",
   "scripts": {
-    "postinstall": "node_modules/.bin/bower install",
-    "start": "node_modules/.bin/iced index.iced"
+    "postinstall": "./node_modules/.bin/bower install",
+    "start": "./node_modules/.bin/iced index.iced"
   },
   "author": "",
   "license": "MIT",

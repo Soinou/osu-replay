@@ -13,12 +13,23 @@ module.exports = class Application
 
     # Constructor
     constructor: (@_root) ->
+        @_helpers = new Dict
         @_models = new Dict
         @_app = express()
 
     # Returns the given model
     getModel: (name) ->
         @_models.get name
+
+    # Loads helpers
+    loadHelpers: ->
+        directory = @_root + "/helpers/"
+
+        for file in fs.readdirSync directory
+            helper = require directory + file
+            @_helpers.set path.basename(file, ".iced"), new helper this
+
+        @info "All helpers loaded"
 
     # Loads express application
     loadApp: ->
@@ -36,19 +47,25 @@ module.exports = class Application
         directory = @_root + "/models/"
 
         for file in fs.readdirSync directory
-            @_models.set path.basename(file, ".iced"), require directory + file
+            name = path.basename(file, ".iced")
+            model = require directory + file
+            @_models.set name, model
+            @info "Model \"" + name + "\" loaded"
 
     # Loads controllers
     loadControllers: ->
         directory = @_root + "/controllers/"
 
         for file in fs.readdirSync directory
-           require(directory + file)(this)
+            name = path.basename(file, ".iced")
+            require(directory + file)(this)
+            @info "Controller \"" + name + "\" loaded"
 
     # Loads everything needed by the application
     load: ->
         dotenv.config()
 
+        @loadHelpers()
         @loadApp()
         @loadModels()
         @loadControllers()
@@ -62,15 +79,18 @@ module.exports = class Application
             process.env.DB_PORT,
             process.env.DB_PATH
 
-        console.log "Connecting to the db at the url: " + url
-
         mongoose.connect url, (err) =>
             if err
-                console.log err
-                throw err
+                @fatal err
 
-            @_app.listen process.env.PORT || 5000, () ->
-                console.log "osu-replay started"
+            port = process.env.PORT || 5000
+
+            @_app.listen port, () =>
+                @info "Application started on port " + port
+
+    # Express app.use
+    use: (args...) =>
+        @_app.use args...
 
     # Express app.get
     get: (args...) ->

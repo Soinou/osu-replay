@@ -2,8 +2,11 @@
     "compilerOptions": {
         "target": "es5",
         "module": "commonjs",
+        "moduleResolution": "node",
         "sourceMap": true,
-        "outDir": "bin"
+        "outDir": "bin",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators" : true
     },
     "exclude": [
         "typings/browser.d.ts",

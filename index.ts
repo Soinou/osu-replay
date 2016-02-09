@@ -1,12 +1,8 @@
-import * as IoC from "electrolyte";
+import kernel from "./app/Kernel";
+import IApplication from "./app/core/Application";
 
-// Directories where we can load modules from
-IoC.use(IoC.node("bin/components"));
-IoC.use(IoC.node("bin/controllers"));
-IoC.use(IoC.node("bin/models"));
-
-// Load the application
-var application = IoC.create("Application");
+// Get the application from the kernel
+var application = kernel.resolve<IApplication>("IApplication");
 
 // Setup application
 application.setup();

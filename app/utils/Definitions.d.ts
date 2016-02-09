@@ -1,19 +1,7 @@
-declare module "collections/dict"
-{
-    var Dict: any;
-    export = Dict;
-}
-
 declare module "dotenv"
 {
     var dotenv: any;
     export = dotenv;
-}
-
-declare module "electrolyte"
-{
-    var IoC: any;
-    export = IoC;
 }
 
 declare module "moment"

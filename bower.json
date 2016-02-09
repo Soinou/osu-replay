@@ -16,8 +16,6 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "^3.3.6",
-    "bower-bootswatch-paper": "paper-less#*",
-    "lumen": "http://github.com/FooBarQuaxx/lumen"
+    "bootstrap": "^3.3.6"
   }
 }

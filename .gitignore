@@ -18,6 +18,4 @@ logs
 
 # Project files and things like that
 .vscode
-jsconfig.json
 typings
-typings.json

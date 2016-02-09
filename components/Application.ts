@@ -30,7 +30,7 @@ export default class Application
         if(!fs.existsSync(".env"))
         {
             fs.linkSync(".env.example", ".env");
-            this._logger.fatal("Please setup the .env file");
+            this._logger.warning("Please setup the .env file");
         }
 
         dotenv.config();

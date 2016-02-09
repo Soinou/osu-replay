@@ -6,8 +6,27 @@ block title
     title Upload a new replay - osu!replay
 
 block content
-    +form("/replay", "POST", "multipart/form-data")
-        +text("replay_title", "title", "Title")
-        +text("replay_description", "description", "Description")
-        +file("replay_file", "file", "File")
-        +submit("Upload")
+    br
+
+    center
+        img(src="/img/logo.png" width="150px" height="150px")
+
+    br
+
+    .jumbotron
+        h1 Welcome to osu!Replay
+        p This website allows you to host for free your osu replays and share them to the whole world thanks to a single link!#[br]Choose a title, a description and select your replay file. Upon clicking the upload button, you will be redirected to a page containing all the previously entered informations you have indicated previously.#[br]You can then publish the link to whoever you want.
+
+    br 
+
+    .well
+        +form("/replay", "POST", "multipart/form-data")
+            +text("replay_title", "title", "Title")
+            +text("replay_description", "description", "Description")
+            +file("replay_file", "file", "File")
+            +submit("Upload")
+
+    br
+
+    center
+        p © 2016, osu!replay

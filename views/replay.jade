@@ -5,12 +5,29 @@ block title
 
 block content
 
-    .panel.panel-default
-        .panel-heading
-            h3.panel-title Replay #{replay.id}
-        .panel-body
-            ul
-                li Title: #{replay.title}
-                li Description: #{replay.description}
-                li Link:
-                    a(href="#{replay.link}")  Download
+    br
+
+    center
+        img(src="/img/logo.png" width="150px" height="150px")
+
+    br
+
+    .alert.alert-warning
+        p Keep a save of your link, because if you lose it, you will not be able to get it back.
+
+    .jumbotron
+        h1  #{replay.title}
+        br
+        p: #[b Description:] #{replay.description}
+        br
+        a.btn.btn-success(href="#{replay.link}") Download
+        h5
+            font(color='#BABABA') Replay #{replay.id}
+
+    center
+        a.btn.btn-primary(href="/") Home
+
+    br
+
+    center
+        p © 2016, osu!replay

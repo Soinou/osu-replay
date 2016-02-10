@@ -6,6 +6,7 @@ public/bower_components
 
 # Output directory
 bin
+build
 
 # Uploads
 public/uploads

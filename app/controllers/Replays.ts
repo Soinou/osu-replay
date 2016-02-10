@@ -5,7 +5,7 @@ import * as path from "path";
 
 import ILogger from "../services/Logger";
 import IStorage from "../services/Storage";
-import IReplay from "../models/Replay";
+import IReplayRepository from "../models/ReplayRepository";
 import IController from "./IController";
 
 import { Inject } from "inversify";
@@ -19,7 +19,7 @@ interface IReplaysController extends IController
 /**
  * Implementation of the IReplaysController
  */
-@Inject("ILogger", "IReplay", "IStorage")
+@Inject("ILogger", "IReplayRepository", "IStorage")
 export class ReplaysController implements IReplaysController {
     /**
      * Multer upload middleware
@@ -29,11 +29,11 @@ export class ReplaysController implements IReplaysController {
     /**
      * Creates a new ReplaysController
      *
-     * @param logger_ Logger
-     * @param replay_ Replay
-     * @param storage_ Storage
+     * @param logger_ Logger service
+     * @param replays_ Replays repository
+     * @param storage_ Storage service
      */
-    constructor(protected logger_: ILogger, protected replay_: IReplay, protected storage_: IStorage) {
+    constructor(protected logger_: ILogger, protected replays_: IReplayRepository, protected storage_: IStorage) {
         this.upload_ = multer({ dest: "public/uploads/" });
     }
 
@@ -77,13 +77,13 @@ export class ReplaysController implements IReplaysController {
                 res.render("errors/500");
             }
             else {
-                var replay = this.replay_.create({
+                var replay = {
                     id: replay_id,
                     title: replay_title,
                     description: replay_description
-                });
+                };
 
-                replay.save(on_replay_saved);
+                this.replays_.insert(replay_id, replay, on_replay_saved);
             }
         };
 
@@ -108,7 +108,7 @@ export class ReplaysController implements IReplaysController {
      * @param res Express response object
      */
     show = (req: Request, res: Response) => {
-        this.replay_.findOne({ id: req.params.id }, (err, replay) => {
+        this.replays_.find(req.params.id, (err, replay) => {
             if (err) {
                 this.logger_.error("Could not retrieve replay with id \"" + req.params.id + "\" from the database: " + err);
                 res.render("errors/500");
@@ -127,13 +127,11 @@ export class ReplaysController implements IReplaysController {
      * @inheritdoc
      */
     install(application: Application) {
-        this.logger_.info("Installing ReplaysController...");
-
         application.post("/replay", this.upload_.single("file"), this.create);
 
         application.get("/replay/:id", this.show);
 
-        this.logger_.info("ReplaysController successfully installed");
+        this.logger_.success("ReplaysController successfully installed");
     }
 }
 

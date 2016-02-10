@@ -1,34 +1,21 @@
 extends layouts/app
 
 block title
-    title #{replay.title} - osu!replay
+    title #{replay.title()} - osu!replay
 
 block content
-
-    br
-
-    center
-        a(href="/")
-            img(src="/img/logo.png" width="150px" height="150px")
-
-    br
 
     .alert.alert-warning
         p Keep a save of your link, because if you lose it, you will not be able to get it back.
 
     .jumbotron
-        h1  #{replay.title}
+        h1  #{replay.title()}
         br
-        p: #[b Description:] #{replay.description}
+        p #[b Description:] #{replay.description()}
         br
-        a.btn.btn-success(href="#{replay.link}") Download
+        a.btn.btn-success(href="#{replay.link()}") Download
         h5
-            font(color='#BABABA') Replay #{replay.id}
+            font(color='#BABABA') Replay #{replay.id()}
 
     center
         a.btn.btn-primary(href="/") Home
-
-    br
-
-    center
-        p © 2016, osu!replay

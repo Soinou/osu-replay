@@ -48,11 +48,16 @@ interface ILogger {
  */
 export class Logger implements ILogger {
     /**
+     * Logs directory
+     */
+    protected static kDirectory: string = "bin/logs";
+
+    /**
      * Creates a new Logger
      */
     constructor() {
-        if (!fs.existsSync("logs")) {
-            fs.mkdirSync("logs");
+        if (!fs.existsSync(Logger.kDirectory)) {
+            fs.mkdirSync(Logger.kDirectory);
         }
     }
 
@@ -66,7 +71,7 @@ export class Logger implements ILogger {
     protected _log(message: string, status: string, color: any) {
         var timestamp = moment().format("HH:mm:ss")
         console.log(timestamp + " [" + color(status) + "] " + message)
-        fs.appendFileSync("logs/" + moment().format("YYYY-MM-DD") + ".log", timestamp + " [" + status + "] " + message + os.EOL)
+        fs.appendFileSync(Logger.kDirectory + "/" + moment().format("YYYY-MM-DD") + ".log", timestamp + " [" + status + "] " + message + os.EOL)
     }
 
     /**

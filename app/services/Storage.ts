@@ -1,4 +1,5 @@
 import * as fs from "fs";
+import * as path from "path";
 import * as s3 from "s3";
 import { Inject } from "inversify";
 
@@ -11,11 +12,11 @@ export interface IStorage {
     /**
      * Uploads the given file using the given name
      *
-     * @param path Path of the file on the disk
+     * @param file_path Path of the file on the disk
      * @param name Name to upload the file with
      * @param callback Function called upon upload completion
      */
-    upload(path: string, name: string, callback: (err?: any) => void);
+    upload(file_path: string, name: string, callback: (err?: any) => void);
 
     /**
      * Returns the http link associated with the given name
@@ -70,14 +71,14 @@ export class S3Storage implements IStorage {
     /**
      * Uploads the file to Amazon S3
      *
-     * @param path Path of the file on the disk
+     * @param file_path Path of the file on the disk
      * @param key Name of the file in the S3 Bucket
      * @param callback Callback
      */
-    upload(path: string, name: string, callback: (err?: any) => void) {
+    upload(file_path: string, name: string, callback: (err?: any) => void) {
         var params =
             {
-                localFile: path,
+                localFile: file_path,
                 s3Params:
                 {
                     Bucket: this.bucket_,
@@ -94,7 +95,7 @@ export class S3Storage implements IStorage {
         });
 
         uploader.on("end", function() {
-            fs.unlink(path, (err) => {
+            fs.unlink(file_path, (err) => {
                 callback(err);
             });
         });
@@ -120,21 +121,24 @@ export class LocalStorage implements IStorage {
      * @param logger_ Logger service
      */
     constructor(protected logger_: ILogger) {
-
+        fs.readdirSync("public/uploads").forEach(element => {
+            fs.unlinkSync("public/uploads/" + element);
+        });
+        this.logger_.success("Local storage created successfully");
     }
 
     /**
      * @inheritdoc
      */
-    upload(path: string, name: string, callback: (err?: any) => void) {
-        fs.rename(path, "public/uploads/" + name, callback);
+    upload(file_path: string, name: string, callback: (err?: any) => void) {
+        callback();
     }
 
     /**
      * @inheritdoc
      */
     link(name: string) {
-        return "/uploads/" + name;
+        return "/uploads/" + name + ".osr";
     }
 }
 

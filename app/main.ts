@@ -1,5 +1,5 @@
-import kernel from "./app/Kernel";
-import IApplication from "./app/core/Application";
+import kernel from "./Kernel";
+import IApplication from "./core/Application";
 
 // Get the application from the kernel
 var application = kernel.resolve<IApplication>("IApplication");

@@ -1,3 +1,9 @@
+declare module "collections/Dict"
+{
+    var collections: any;
+    export = collections;
+}
+
 declare module "dotenv"
 {
     var dotenv: any;
@@ -8,6 +14,12 @@ declare module "moment"
 {
     var moment: any;
     export = moment;
+}
+
+declare module "mongodb"
+{
+    var mongodb: any;
+    export = mongodb;
 }
 
 declare module "morgan"

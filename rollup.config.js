@@ -10,7 +10,7 @@ export default {
     external: [
         "body-parser",
         "chalk",
-        "collections/Dict",
+        "collections/dict",
         "dotenv",
         "express",
         "fs",

@@ -22,6 +22,12 @@ declare module "mongodb"
     export = mongodb;
 }
 
+declare module "mongojs"
+{
+    var mongojs: any;
+    export = mongojs;
+}
+
 declare module "morgan"
 {
     var morgan: any;

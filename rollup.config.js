@@ -18,6 +18,7 @@ export default {
         "inversify",
         "moment",
         "mongodb",
+        "mongojs",
         "morgan",
         "multer",
         "os",

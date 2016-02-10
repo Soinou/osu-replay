@@ -1,58 +1,59 @@
 {
-    "name": "osu!replay",
-    "version": "1.0.0",
-    "description": "Website to upload osu! replays and share them easily",
-    "main": "app.main.ts",
-    "license": "MIT",
-    "author": "Abricot Soinou <abricot.soinou@gmail.com>",
-    "contributors": [
-        {
-            "name": "LemonAdd",
-            "email": "lemon.add0@gmail.com",
-            "url": "https://github.com/LemonAdd"
-        },
-        {
-            "name": "Pauto",
-            "email": "",
-            "url": ""
-        }
-    ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/Soinou/osu-replay"
+  "name": "osu!replay",
+  "version": "1.0.0",
+  "description": "Website to upload osu! replays and share them easily",
+  "main": "app.main.ts",
+  "license": "MIT",
+  "author": "Abricot Soinou <abricot.soinou@gmail.com>",
+  "contributors": [
+    {
+      "name": "LemonAdd",
+      "email": "lemon.add0@gmail.com",
+      "url": "https://github.com/LemonAdd"
     },
-    "bugs": {
-        "url": "https://github.com/Soinou/osu-replay/issues"
-    },
-    "scripts": {
-        "rollup": "node node_modules/rollup/bin/rollup -c",
-        "typescript": "node node_modules/typescript/bin/tsc",
-        "build": "npm run typescript && npm run rollup",
-        "typings": "node node_modules/typings/dist/bin/typings.js install",
-        "bower": "node node_modules/bower/bin/bower install",
-        "postinstall": "npm run typings && npm run bower",
-        "start": "npm run build && node bin/www"
-    },
-    "dependencies": {
-        "babel-preset-es2015-rollup": "^1.1.1",
-        "body-parser": "^1.14.2",
-        "bower": "^1.7.7",
-        "chalk": "^1.1.1",
-        "collections": "^3.0.0",
-        "dotenv": "^2.0.0",
-        "express": "^4.13.4",
-        "fs-extra": "^0.26.5",
-        "inversify": "^1.3.1",
-        "jade": "^1.11.0",
-        "moment": "^2.11.2",
-        "mongodb": "^2.1.7",
-        "morgan": "^1.6.1",
-        "multer": "^1.1.0",
-        "rollup": "^0.25.3",
-        "rollup-plugin-babel": "^2.3.9",
-        "rollup-plugin-uglify": "^0.2.0",
-        "s3": "^4.4.0",
-        "typescript": "^1.7.5",
-        "typings": "^0.6.7"
+    {
+      "name": "Pauto",
+      "email": "",
+      "url": ""
     }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Soinou/osu-replay"
+  },
+  "bugs": {
+    "url": "https://github.com/Soinou/osu-replay/issues"
+  },
+  "scripts": {
+    "rollup": "node node_modules/rollup/bin/rollup -c",
+    "typescript": "node node_modules/typescript/bin/tsc",
+    "build": "npm run typescript && npm run rollup",
+    "typings": "node node_modules/typings/dist/bin/typings.js install",
+    "bower": "node node_modules/bower/bin/bower install",
+    "postinstall": "npm run typings && npm run bower",
+    "start": "npm run build && node bin/www"
+  },
+  "dependencies": {
+    "babel-preset-es2015-rollup": "^1.1.1",
+    "body-parser": "^1.14.2",
+    "bower": "^1.7.7",
+    "chalk": "^1.1.1",
+    "collections": "^3.0.0",
+    "dotenv": "^2.0.0",
+    "express": "^4.13.4",
+    "fs-extra": "^0.26.5",
+    "inversify": "^1.3.1",
+    "jade": "^1.11.0",
+    "moment": "^2.11.2",
+    "mongodb": "^2.1.7",
+    "mongojs": "^2.3.0",
+    "morgan": "^1.6.1",
+    "multer": "^1.1.0",
+    "rollup": "^0.25.3",
+    "rollup-plugin-babel": "^2.3.9",
+    "rollup-plugin-uglify": "^0.2.0",
+    "s3": "^4.4.0",
+    "typescript": "^1.7.5",
+    "typings": "^0.6.7"
+  }
 }

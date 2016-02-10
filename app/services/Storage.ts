@@ -65,7 +65,7 @@ export class S3Storage implements IStorage {
 
         this.client_ = s3.createClient(options);
 
-        this.logger_.success("Storage service successfully initialized");
+        this.logger_.success("Amazon S3 Storage service successfully initialized");
     }
 
     /**
@@ -138,7 +138,7 @@ export class LocalStorage implements IStorage {
      * @inheritdoc
      */
     link(name: string) {
-        return "/uploads/" + name + ".osr";
+        return "/uploads/" + name;
     }
 }
 

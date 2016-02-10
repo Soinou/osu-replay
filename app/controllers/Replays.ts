@@ -5,7 +5,7 @@ import * as path from "path";
 
 import ILogger from "../services/Logger";
 import IStorage from "../services/Storage";
-import IReplayRepository from "../models/ReplayRepository";
+import IReplayRepository from "../repositories/ReplayRepository";
 import IController from "./IController";
 
 import { Inject } from "inversify";
@@ -44,10 +44,11 @@ export class ReplaysController implements IReplaysController {
      * @param res Express response object
      */
     create = (req: any, res: Response) => {
-        var replay_id = req.file.filename
-        var replay_title = req.body.title
-        var replay_description = req.body.description
-        var replay_path = req.file.path + ".osr"
+        var replay_id = req.file.filename;
+        var replay_title = req.body.title;
+        var replay_description = req.body.description;
+        var replay_path = req.file.path + ".osr";
+        var replay_link = this.storage_.link(replay_id) + ".osr";
 
         // Called once the unlink is done
         var on_unlink = (err) => {
@@ -80,7 +81,8 @@ export class ReplaysController implements IReplaysController {
                 var replay = {
                     id: replay_id,
                     title: replay_title,
-                    description: replay_description
+                    description: replay_description,
+                    link: replay_link
                 };
 
                 this.replays_.insert(replay_id, replay, on_replay_saved);

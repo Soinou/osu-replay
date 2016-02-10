@@ -1,5 +1,5 @@
 import * as mongodb from "mongodb";
-import * as Dict from "collections/Dict";
+import * as Dict from "collections/dict";
 import * as util from "util";
 
 import ILogger from "./Logger";

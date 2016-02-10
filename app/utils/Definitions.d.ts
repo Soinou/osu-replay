@@ -1,4 +1,4 @@
-declare module "collections/Dict"
+declare module "collections/dict"
 {
     var collections: any;
     export = collections;

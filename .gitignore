@@ -20,3 +20,5 @@ logs
 # Project files and things like that
 .vscode
 typings
+*.sublime-project
+*.sublime-workspace

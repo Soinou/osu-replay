@@ -2,7 +2,7 @@
   "name": "osu!replay",
   "description": "",
   "main": "index.iced",
-  "license": "MIT",
+  "license": "WTFPL",
   "moduleType": [
     "node"
   ],

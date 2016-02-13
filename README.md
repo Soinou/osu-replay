@@ -10,18 +10,18 @@ It's a simple website where you can upload your osu! replays and share them. As 
 
 ## Where do I see it?
 
-The website is deployed frequently on [Heroku](osu-replay.herokuapp.com) though it's pretty much in development and replays might be wiped sometimes.
+The website is deployed frequently on [Heroku](http://osu-replay.herokuapp.com) though it's pretty much in development and replays might be wiped sometimes.
 
 ## How do I build it?
 
 To build the website, you will need:
 
-- [Node.js](https:#nodejs.org) installed on your machine
+- [Node.js](https://nodejs.org) installed on your machine
 
 If you plan on testing the production version of the website, you will need:
 
-- A [MongoDB](https:#www.mongodb.org/) server running somewhere
-- An [Amazon S3](https:#aws.amazon.com/s3/) access key
+- A [MongoDB](https://www.mongodb.org/) server running somewhere
+- An [Amazon S3](https://aws.amazon.com/s3/) access key
 
 Though if you just want to test the front-end, the website will use local storages (That will be wiped at each restart, so be careful).
 
@@ -56,7 +56,7 @@ To run the tests you need to install the npm dev dependencies. You need to have 
 
     npm install
 
-It will then install [mocha](mochajs.org) and [chai](chaijs.com). Finally, you will be able to run:
+It will then install [mocha](http://mochajs.org) and [chai](http://chaijs.com). Finally, you will be able to run:
 
     npm test
 
@@ -166,4 +166,4 @@ This is the data format of the osu! replays the front-end is getting. If you hav
 
 ## License
 
-License (WTFPL) is provided in the [LICENSE.md](https:#github.com/Soinou/osu-replay/blob/master/LICENSE.md) file.
+License (WTFPL) is provided in the [LICENSE.md](https://github.com/Soinou/osu-replay/blob/master/LICENSE.md) file.

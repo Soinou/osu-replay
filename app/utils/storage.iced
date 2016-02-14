@@ -35,12 +35,15 @@ class S3Storage
         return s3.getPublicUrlHttp @bucket_, key + ".osr"
 
 class LocalStorage
-    constructor: (logger) ->
-        logger.debug "Local storage created successfully"
+    constructor: (@logger_) ->
+        fs.ensureDirSync "public/replays"
+        @logger_.debug "Local storage created successfully"
 
     upload: (file_path, file_name, callback) ->
         esc = make_esc callback
+        @logger_.debug "Moving replay from " + file_path + " to public/replays/" + file_name
         await fs.move file_path, "public/replays/" + file_name, esc(defer())
+        @logger_.debug "Moved replay"
         callback null
 
     link: (key) ->

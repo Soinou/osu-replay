@@ -12,7 +12,9 @@ block content
     .jumbotron
         h1  #{replay.title}, 
                     small by 
-                        a(href="https://osu.ppy.sh/u/#{replay.player.username}") #{replay.player.username}
+                        a(href="https://osu.ppy.sh/u/#{replay.player.user_id}") #{replay.player.username} 
+                        img(src="http://a.ppy.sh/#{replay.player.user_id}" width="50px" height="50px")
+
         .row
             .col-md-6
                 

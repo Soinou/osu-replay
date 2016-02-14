@@ -1,0 +1,12 @@
+mixin avatar(replay)
+    img(src="http://a.ppy.sh/" + replay.player.user_id)
+
+mixin profile(replay)
+    a(href=replay.get_player_link()) #{replay.player.username}
+
+mixin beatmap(replay)
+    a(href=replay.get_beatmap_link()) #{replay.beatmap.artist} - #{replay.beatmap.title}
+
+mixin mods(replay)
+    each mod in replay.get_mods()
+        img(src="/img/mods/" + mod + ".png")

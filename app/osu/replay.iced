@@ -1,5 +1,41 @@
+extend = require("util")._extend
 fs = require "fs-extra"
 {make_esc} = require "iced-error"
+mods = require "./mods"
+
+# Replay data wrapper, adding a few useful methods
+class Replay
+
+    # Creates a new Replay
+    constructor: (data) ->
+        extend this, data
+
+    get_game_mode: ->
+        switch @mode
+            when 0 then "Standard"
+            when 1 then "Taiko"
+            when 2 then "Catch The Beat"
+            when 3 then "Mania"
+
+    get_game_mode_icon: ->
+        switch @mode
+            when 0 then "fa osu fa-osu-o"
+            when 1 then "fa osu fa-taiko-o"
+            when 2 then "fa osu fa-fruits-o"
+            when 3 then "fa osu fa-mania-o"
+
+    # Returns the list of mods present in this replay
+    get_mods: ->
+        return mods.get_mods @mods
+
+    get_beatmap_link: ->
+        return "https://osu.ppy.sh/b/" + @beatmap.beatmap_id
+
+    get_beatmap_set_link: ->
+        return "https://osu.ppy.sh/s/" + @beatmap.beatmapset_id
+
+    get_player_link: ->
+        return "https://osu.ppy.sh/u/" + @player.user_id
 
 # Factory to create replays
 exports = module.exports = class ReplayFactory
@@ -18,7 +54,7 @@ exports = module.exports = class ReplayFactory
         data.beatmap = beatmap
         data.player = user
         data.link = @storage_.link data._id
-        callback null, data
+        callback null, new Replay data
 
     # Creates a new Replay based on a file buffer
     from_file: (path, callback) ->

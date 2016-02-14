@@ -1,5 +1,7 @@
 extends layouts/app
 
+include mixins/osu
+
 block title
     title #{replay.title} - osu!replay
 
@@ -10,29 +12,30 @@ block content
 
 
     .jumbotron
-        h1  #{replay.title}, 
-                    small by 
-                        a(href="https://osu.ppy.sh/u/#{replay.player.username}") #{replay.player.username}
+        h1  #{replay.title}, #[small by #[+profile(replay)]]
         .row
             .col-md-6
-                
+
                 br
-                p #[b Game mode:] #{replay.mode}
+                p #[b Game mode:] #{replay.get_game_mode()}
                 br
-                p #[b Beatmap:] #{replay.beatmap.artist} - #{replay.beatmap.title}
-                p #[b Mods :] #{replay.mods}
+                p #[b Beatmap:] #[+beatmap(replay)]
+                br
+                p #[b Mods :] #[+mods(replay)]
+                br
                 p #[b Score:] #{replay.score}
+                br
                 p #[b Combo max:] #{replay.combo}
                 br
-                
+
             .col-md-6
                 br
                 .well
-                    p #[b Descritpion:] #{replay.description}
+                    p #[b Description:] #{replay.description}
 
                 a.btn.btn-block.btn-success(href="#{replay.link}") Download
                 h5
-                    font(color='#BABABA') Replay #{replay.id}
+                    font(color='#BABABA') Replay #{replay._id}
 
     center
         a.btn.btn-primary(href="/") Upload another replay

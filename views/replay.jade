@@ -8,14 +8,32 @@ block content
     .alert.alert-warning
         p Keep a save of your link, because if you lose it, you will not be able to get it back.
 
+
     .jumbotron
-        h1  #{replay.title}
-        br
-        p #[b Description:] #{replay.description}
-        br
-        a.btn.btn-success(href="#{replay.link}") Download
-        h5
-            font(color='#BABABA') Replay #{replay.id}
+        h1  #{replay.title}, 
+                    small by 
+                        a(href="https://osu.ppy.sh/u/#{replay.player.username}") #{replay.player.username}
+        .row
+            .col-md-6
+                
+                br
+                p #[b Game mode:] #{replay.mode}
+                br
+                p #[b Beatmap:] #{replay.beatmap.artist} - #{replay.beatmap.title}
+                p #[b Mods :] #{replay.mods}
+                p #[b Score:] #{replay.score}
+                p #[b Combo max:] #{replay.combo}
+                br
+                
+            .col-md-6
+                br
+                .well
+                    p #[b Descritpion:] #{replay.description}
+
+                a.btn.btn-block.btn-success(href="#{replay.link}") Download
+                h5
+                    font(color='#BABABA') Replay #{replay.id}
 
     center
-        a.btn.btn-primary(href="/") Home
+        a.btn.btn-primary(href="/") Upload another replay
+

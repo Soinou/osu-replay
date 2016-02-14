@@ -4,12 +4,12 @@
   "description": "Website to upload osu! replays and share them easily",
   "main": "app/index.iced",
   "license": "WTFPL",
-  "author": "Abricot Soinou <abricot.soinou@gmail.com>",
+  "author": "LemonAdd <lemon.add0@gmail.com>",
   "contributors": [
     {
-      "name": "LemonAdd",
-      "email": "lemon.add0@gmail.com",
-      "url": "https://github.com/LemonAdd"
+      "name": "Soinou",
+      "email": "abricot.soinou@gmail.com",
+      "url": "https://github.com/Soinou"
     },
     {
       "name": "Pautau",
@@ -37,6 +37,8 @@
     "dotenv": "^2.0.0",
     "electrolyte": "^0.2.0",
     "express": "^4.13.4",
+    "express-exceptions": "0.0.7",
+    "express-validator": "^2.19.1",
     "fs-extra": "^0.26.5",
     "iced-coffee-script": "^108.0.9",
     "iced-error": "0.0.9",

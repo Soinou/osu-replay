@@ -3,19 +3,28 @@ mixin form(action, method, enctype)
         block
 
 mixin text(id, name, label)
-    .form-group
-        label(for=id)= label
-        input.form-control(type="text" id=id name=name)
+    - var has_error = (errors && errors[name])
+    div(class="form-group" + (has_error ? " has-error" : ""))
+        label.control-label(for=id)= label
+        input.form-control(type="text" id=id name=name value= has_error ? errors[name].value : "")
+        if has_error
+            span.help-block= errors[name].msg
 
 mixin text_area(id, name, label, rows)
-    .form-group
-        label(for=id)= label
-        textarea.form-control(id=id name=name rows=rows)
+    - var has_error = (errors && errors[name])
+    div(class="form-group" + (has_error ? " has-error" : ""))
+        label.control-label(for=id)= label
+        textarea.form-control(id=id name=name rows=rows value= has_error ? errors[name].value : "")
+        if has_error
+            span.help-block= errors[name].msg
 
 mixin file(id, name, label)
-    .form-group
-        label(for=id)= label
-        input.form-control(type="file" id=id name=name)
+    - var has_error = (errors && errors[name])
+    div(class="form-group" + (has_error ? " has-error" : ""))
+        label.control-label(for=id)= label
+        input.form-control(type="file" id=id name=name value= has_error ? errors[name].value : "")
+        if has_error
+            span.help-block= errors[name].msg
 
 mixin submit(value)
     button.btn.btn-success(type="submit")= value

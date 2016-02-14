@@ -53,9 +53,6 @@ exports = module.exports = class ReplaysController
 
     # GET /replay/:id
     _show: (req, res, next) =>
-
-        return next(new Error("I HAZ SOME ERROR"))
-
         # Get the replay id
         key = req.params.id
 

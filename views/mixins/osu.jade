@@ -1,5 +1,5 @@
 mixin avatar(replay)
-    img(src="http://a.ppy.sh/" + replay.player.user_id)
+    img(src="https://a.ppy.sh/" + replay.player.user_id width="50px" height="50px")
 
 mixin profile(replay)
     a(href=replay.get_player_link()) #{replay.player.username}
@@ -9,4 +9,4 @@ mixin beatmap(replay)
 
 mixin mods(replay)
     each mod in replay.get_mods()
-        img(src="/img/mods/" + mod + ".png")
+        img(src="/img/mods/" + mod + ".png" height="30px")

@@ -1,7 +1,11 @@
 IoC = require "./bootstrap"
 
-application = IoC.create "application"
+try
+    application = IoC.create "application"
 
-application.setup()
+    application.setup()
 
-application.start()
+    application.start()
+catch error
+    console.err "Unexpected error: "
+    console.err error.stack

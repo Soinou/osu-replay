@@ -24,6 +24,7 @@ exports = module.exports = class Application
             res.render "home"
         @logger_.debug "Routes installed"
         @router_.install @app_
+        @app_.use @_error
         @logger_.debug "Application initialized"
 
     # Starts the application
@@ -34,6 +35,12 @@ exports = module.exports = class Application
                 @logger_.fatal "Could not start application: " + err
             else
                 @logger_.success "Application listening on port " + port
+
+    # Error middleware
+    _error: (err, req, res, next) =>
+        console.dir res
+        @logger_.error err.stack
+        res.status(500).render "/errors/500", error: err
 
 exports["@singleton"] = true
 exports["@require"] = [ "logger", "router" ]

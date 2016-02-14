@@ -1,27 +1,30 @@
-multer = require "multer"
-upload = multer dest: "public/uploads/"
-uuid = require "node-uuid"
+path = require "path"
 
 # Represents a replays controller
 exports = module.exports = class ReplaysController
 
     # Creates a new ReplaysController
-    constructor: (@logger_, @replays_) ->
+    constructor: (@logger_, @replays_, @uploader_) ->
 
     # Installs the controller to the given express app
     install: (app) ->
-        app.post "/replay", upload.single("file"), @_create
+        app.post "/replay", @uploader_.single("file"), @_create
         app.get "/replay/:id", @_show
         @logger_.debug "ReplaysController installed"
 
     # POST /replay
     _create: (req, res) =>
-        key = req.file.filename
+        # File is not correct, we should flash inputs and redirect back
+        if not req.file?
+            # For now just redirect back
+            return res.redirect "/"
+        key = req.file.id
         # Could be a good idea to test some inputs
         params =
             title: req.body.title,
             description: req.body.description,
-            path: req.file.path
+            path: req.file.path,
+            name: req.file.filename
         @logger_.debug "Saving a new replay"
         await @replays_.save key, params, defer err
         if err
@@ -47,4 +50,4 @@ exports = module.exports = class ReplaysController
             res.render "replay", replay: replay
 
 exports["@singleton"] = true
-exports["@require"] = [ "logger", "replay_store" ]
+exports["@require"] = [ "logger", "replay_store", "uploader"]

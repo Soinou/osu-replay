@@ -11,6 +11,8 @@ build
 
 # Uploads
 public/uploads
+public/replays
+tmp
 
 # Logs directory
 logs

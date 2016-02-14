@@ -19,13 +19,13 @@ exports = module.exports = class ReplayStore
         callback null, replay
 
     # Saves a replay using its key and some parameters
-    # Params should contains replay, description and file path
+    # Params should have path, name, title and description
     save: (key, params, callback) ->
         esc = make_esc callback
         @logger_.debug "Loading replay data from file"
         await @replay_.from_file params.path, esc(defer(replay))
         @logger_.debug "Replay data loaded, uploading replay file"
-        await @storage_.upload params.path, key, esc(defer())
+        await @storage_.upload params.path, params.name, esc(defer())
         @logger_.debug "Replay file uploaded, saving data to the store"
         replay.title = params.title or "No title"
         replay.description = params.description or "No description"

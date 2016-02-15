@@ -1,4 +1,5 @@
 {make_esc} = require "iced-error"
+moment = require "moment"
 
 # Defines a store of osu! replays
 exports = module.exports = class ReplayStore
@@ -6,6 +7,12 @@ exports = module.exports = class ReplayStore
     # Creates a new ReplayStore
     constructor: (@logger_, @replay_, @storage_, store) ->
         @store_ = store.create "replays"
+
+    all: (callback) ->
+        @store_.all callback
+
+    find: (key, callback) ->
+        @store_.find key, callback
 
     # Gets a replay by its key
     get: (key, callback) ->
@@ -29,9 +36,14 @@ exports = module.exports = class ReplayStore
         @logger_.debug "Replay file uploaded, saving data to the store"
         replay.title = params.title or "No title"
         replay.description = params.description or "No description"
+        replay.created_at = moment()
+        replay.updated_at = moment()
         await @store_.insert key, replay, esc(defer())
         @logger_.debug "Replay saved"
         callback null
+
+    update: (key, params, callback) ->
+        @store_.update key, params, callback
 
 # Exports
 exports["@singleton"] = true

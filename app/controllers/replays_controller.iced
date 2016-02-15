@@ -51,6 +51,7 @@ exports = module.exports = class ReplaysController
             @logger_.debug "Replay \"" + key + "\" successfully saved"
             res.redirect "/replay/" + key
 
+
     # GET /replay/:id
     _show: (req, res, next) =>
         # Get the replay id

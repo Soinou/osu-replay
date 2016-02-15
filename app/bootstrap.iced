@@ -10,10 +10,12 @@ if not fs.existsSync ".env"
 
 dotenv.config()
 
+IoC.use IoC.node "app/commands"
 IoC.use IoC.node "app/controllers"
 IoC.use IoC.node "app/core"
 IoC.use IoC.node "app/osu"
 IoC.use IoC.node "app/stores"
 IoC.use IoC.node "app/utils"
+IoC.use IoC.node "migrations"
 
 exports = module.exports = IoC

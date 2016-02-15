@@ -18,6 +18,9 @@ class MongoStore
 
         @collection_ = mongojs(url, [name]).collection name
 
+    all: (callback) ->
+        @collection_.find callback
+
     find: (id, callback) ->
         @collection_.findOne _id: id, callback
 
@@ -36,6 +39,9 @@ class LocalStore
 
     constructor: (name) ->
         @collection_ = new Dict
+
+    all: (callback) ->
+        callback null, @collection_.values()
 
     find: (id, callback) ->
         value = @collection_.get(id, null)

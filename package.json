@@ -25,9 +25,11 @@
     "url": "https://github.com/Soinou/osu-replay/issues"
   },
   "scripts": {
-    "test": "node node_modules/mocha/bin/mocha --require ./test/iced_tests.js --compilers iced:iced-coffee-script",
+    "cake": "node node_modules/iced-coffee-script/bin/cake",
+    "migrate": "node node_modules/iced-coffee-script/bin/cake migrate",
     "postinstall": "node node_modules/bower/bin/bower install",
-    "start": "node node_modules/iced-coffee-script/bin/coffee app/index.iced"
+    "start": "node node_modules/iced-coffee-script/bin/cake start",
+    "test": "node node_modules/iced-coffee-script/bin/cake test"
   },
   "dependencies": {
     "body-parser": "^1.14.2",
@@ -51,6 +53,7 @@
     "multer": "^1.1.0",
     "node-int64": "^0.4.0",
     "node-uuid": "^1.4.7",
+    "nodemon": "^1.8.1",
     "s3": "^4.4.0",
     "shortid": "^2.2.4"
   },

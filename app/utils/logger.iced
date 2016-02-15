@@ -18,16 +18,15 @@ class Logger
     # Internal logging
     # Logs to a log file and to the console
     _log: (message, status, color) ->
-        process.nextTick () ->
-            hour = moment().format "HH:mm:ss"
-            day = moment().format "YYYY-MM-DD"
-            file = kDirectory + "/" + day + ".log"
-            colored = hour + " [" + color(status) + "] " + message
-            uncolored = hour + " [" + status + "] " + message + os.EOL
-            console.log colored
-            fs.appendFile file, uncolored, (err) ->
-                if err
-                    console.log "Error when writing to the log file: " + err
+        hour = moment().format "HH:mm:ss"
+        day = moment().format "YYYY-MM-DD"
+        file = kDirectory + "/" + day + ".log"
+        colored = hour + " [" + color(status) + "] " + message
+        uncolored = hour + " [" + status + "] " + message + os.EOL
+        console.log colored
+        fs.appendFile file, uncolored, (err) ->
+            if err
+                console.log "Error when writing to the log file: " + err
 
     # Logs a debug message (Level 0)
     debug: (message) ->

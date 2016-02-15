@@ -17,8 +17,8 @@ exports = module.exports = class ReplaysController
         # Some validation rules
         req.check("title", "Title must not be empty").notEmpty()
         req.check("title", "Title must be 3-30 characters long").isLength({min: 3, max:30})
-        req.check("description", "description must not be empty").notEmpty()
-        req.check("description", "description must be 3-255 characters long").isLength({ min: 3, max: 255})
+        req.check("description", "Description must not be empty").notEmpty()
+        req.check("description", "Description must be 3-255 characters long").isLength({ min: 3, max: 255})
 
         # Validate inputs
         errors = req.validationErrors(true)

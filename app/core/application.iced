@@ -29,18 +29,12 @@ exports = module.exports = class Application
 
         @logger_.debug "Application middleware setup, installing routes"
 
-        # Setup default route
-        @app_.get "/", (req, res) ->
-            res.render "home"
-
-        @app_.get "/teapot", (req, res) ->
-            res.status(418).send "I'm a teapot"
-
-        # And other routes
+        # Aadd routes
         @router_.install @app_
 
         @logger_.debug "Routes installed"
 
+        # Exception middleware
         @app_.use exceptions(defaultErrorPage: "errors/500")
 
         @logger_.debug "Application initialized"

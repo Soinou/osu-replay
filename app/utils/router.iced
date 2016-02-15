@@ -2,11 +2,12 @@
 exports = module.exports = class Router
 
     # Creates a new router
-    constructor: (@replays_) ->
+    constructor: (@home_, @replays_) ->
 
     # Installs the router to the given express application
     install: (app) ->
-        @replays_.install(app)
+        @home_.install app
+        @replays_.install app
 
 exports["@singleton"] = true
-exports["@require"] = [ "replays_controller" ]
+exports["@require"] = [ "home_controller", "replays_controller" ]

@@ -26,6 +26,7 @@
   },
   "scripts": {
     "cake": "node node_modules/iced-coffee-script/bin/cake",
+    "bundle": "node node_modules/iced-coffee-script/bin/cake bundle",
     "migrate": "node node_modules/iced-coffee-script/bin/cake migrate",
     "postinstall": "node node_modules/bower/bin/bower install",
     "start": "node node_modules/iced-coffee-script/bin/cake start",
@@ -33,7 +34,10 @@
   },
   "dependencies": {
     "body-parser": "^1.14.2",
+    "bootstrap": "^3.3.6",
     "bower": "^1.7.7",
+    "browserify": "^13.0.0",
+    "browserify-shim": "^3.8.12",
     "chalk": "^1.1.1",
     "collections": "^3.0.0",
     "dotenv": "^2.0.0",
@@ -44,21 +48,34 @@
     "fs-extra": "^0.26.5",
     "iced-coffee-script": "^108.0.9",
     "iced-error": "0.0.9",
+    "icsify": "^0.7.0",
     "jade": "^1.11.0",
+    "jquery": "^2.2.0",
     "leb": "^0.3.0",
+    "minifyify": "^7.2.1",
     "moment": "^2.11.2",
     "mongodb": "^2.1.7",
     "mongojs": "^2.3.0",
     "morgan": "^1.6.1",
     "multer": "^1.1.0",
     "node-int64": "^0.4.0",
+    "node-sass": "^3.4.2",
     "node-uuid": "^1.4.7",
-    "nodemon": "^1.8.1",
     "s3": "^4.4.0",
     "shortid": "^2.2.4"
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^2.4.5"
+  },
+  "browser": {
+    "jquery": "resources/vendor/jquery/dist/jquery.js",
+    "bootstrap": "resources/vendor/bootstrap/dist/js/bootstrap.js"
+  },
+  "browserify-shim": {
+    "jquery": "$",
+    "bootstrap": {
+      "depends": "jquery"
+    }
   }
 }

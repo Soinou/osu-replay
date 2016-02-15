@@ -3,18 +3,19 @@ include ../mixins/utils
 doctype html
 html
     head
+        //- Title
         block title
             title osu!replay
 
-        //- CSS files
-        +stylesheet("/css/font-awesome.css")
-        +stylesheet("/css/lumen.css")
-        +stylesheet("//fonts.googleapis.com/css?family=Exo+2:300,300italic,200,400,400italic,500,500italic,700,700italic,900")
-        +stylesheet("/css/app.css")
-        +script("/vendor/jquery/dist/jquery.min.js")
-
         //- Favicon
-        link(href="/img/favicon.ico" rel="shortcut icon" type="image/x-icon")
+        link(rel="icon" type="image/x-icon" href="/img/favicon.ico")
+
+        //- Application CSS
+        //- +stylesheet("//fonts.googleapis.com/css?family=Exo+2:300,300italic,200,400,400italic,500,500italic,700,700italic,900")
+        +stylesheet("/build/css/app.css")
+
+        //- JS libs
+        +script("/build/js/lib.js")
     body
         br
         center
@@ -31,4 +32,4 @@ html
             p © 2016, osu!replay
 
         #scripts
-            +script("/vendor/bootstrap/dist/js/bootstrap.min.js")
+            block scripts

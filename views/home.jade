@@ -13,8 +13,11 @@ block content
     br
 
     .well
-        +form("/replay", "POST", "multipart/form-data")
+        +form("replay","/replay", "POST", "multipart/form-data")
             +text("replay_title", "title", "Title")
             +text_area("replay_description", "description", "Description")
-            +file("replay_file", "file", "File")
+            +file("replay_file", "file", "File", ".osr")
             +submit("Upload")
+
+block scripts
+    //- script(type="text/javascript" src="/build/js/home.js")

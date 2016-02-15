@@ -10,7 +10,6 @@ block content
     .alert.alert-warning
         p Keep a save of your link, because if you lose it, you will not be able to get it back.
 
-
     .jumbotron
         h1  #{replay.title}, #[small by #[+profile(replay)]] #[+avatar(replay)]
         .row
@@ -46,6 +45,7 @@ block content
     center
         a.btn.btn-primary(href="/") Upload another replay
 
+block scripts
     script(type="text/javascript").
         var disqus_config = function()
         {

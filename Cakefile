@@ -7,5 +7,5 @@ add_task = (command_string, description) ->
 
 add_task "migrate", "Runs the pending migrations"
 add_task "start", "Starts the server"
-add_task "hello", "Prints Hello World!"
+add_task "bundle", "Bundles the resources"
 add_task "test", "Runs the mocha tests"

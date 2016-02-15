@@ -28,7 +28,7 @@ mixin input(id, type, name)
     - attributes.id = id
     - attributes.type = type
     - attributes.name = name
-    - if(has_error) attributes.value = errors[name].msg
+    - if(has_error) attributes.value = errors[name].value
 
     input.form-control&attributes(attributes)
 

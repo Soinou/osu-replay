@@ -10,8 +10,10 @@ exports = module.exports = class UserStore
         await @store_.find key, esc(defer(user))
         if not user?
             await @api_.get_users u: key, esc(defer(users))
+            if not users? then return callback null, null
             if users.length > 0
                 user = users[0]
+            if not user? then return callback null, null
             await @store_.insert key, user, esc(defer())
         callback null, user
 

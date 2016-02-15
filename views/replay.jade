@@ -37,6 +37,29 @@ block content
                 h5
                     font(color='#BABABA') Replay #{replay._id}
 
+        .row
+            p Don't hesitate to let a comment !
+
+        #disqus_thread.row
+
     center
         a.btn.btn-primary(href="/") Upload another replay
 
+    script(type="text/javascript").
+        var disqus_config = function()
+        {
+            this.page.url = "http://osu-replay.herokuapp.com/replay/#{replay._id}";
+            this.page.identifier = "#{replay._id}";
+            this.page.title = "#{replay.title}";
+        };
+
+        (function() {
+            var d = document, s = d.createElement('script');
+
+            s.src = '//osureplay.disqus.com/embed.js';
+
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+
+    noscript Please enable JavaScript to view the #[a(href="https://disqus.com/?ref_noscript" rel="nofollow") comments powered by Disqus.]

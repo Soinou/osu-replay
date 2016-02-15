@@ -16,7 +16,11 @@ exports = module.exports = class Uploader
             filename: @filename
         }
 
-        @uploader_ = multer {storage: storage, fileFilter: @filter}
+        limits = {
+            fileSize: 307200
+        }
+
+        @uploader_ = multer {storage: storage, fileFilter: @filter, limits: limits}
 
     single: (name) ->
         return @uploader_.single name
@@ -30,7 +34,7 @@ exports = module.exports = class Uploader
         callback null, id + ".osr"
 
     filter: (req, file, callback) =>
-        if path.extname file.originalname is not ".osr"
+        if path.extname(file.originalname) isnt ".osr"
             callback null, false
         else if file.encoding is not "7bit"
             callback null, false

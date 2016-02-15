@@ -24,10 +24,12 @@ exports = module.exports = class ReplaysController
         errors = req.validationErrors(true)
 
         # Also validate the file field
-        if not req.file? then errors.file = {param: "file", msg: "File given is not valid", value: ""}
+        if not req.file?
+            errors = errors or {}
+            errors.file = {param: "file", msg: "File given is not valid", value: ""}
 
         # If we have errors send them back
-        if errors then return res.render "home", errors: errors
+        if errors then return res.status(422).render "home", errors: errors
 
         # Replay key is the file name without the extension
         key = req.file.id

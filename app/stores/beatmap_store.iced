@@ -10,8 +10,10 @@ exports = module.exports = class UserStore
         await @store_.find key, esc(defer(beatmap))
         if not beatmap?
             await @api_.get_beatmaps h: key, esc(defer(beatmaps))
+            if not beatmaps? then return callback null, null
             if beatmaps.length > 0
                 beatmap = beatmaps[0]
+            if not beatmap then return callback null, null
             await @store_.insert key, beatmap, esc(defer())
         callback null, beatmap
 

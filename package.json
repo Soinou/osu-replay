@@ -28,7 +28,7 @@
     "cake": "node node_modules/iced-coffee-script/bin/cake",
     "bundle": "node node_modules/iced-coffee-script/bin/cake bundle",
     "migrate": "node node_modules/iced-coffee-script/bin/cake migrate",
-    "postinstall": "node node_modules/bower/bin/bower install",
+    "postinstall": "node node_modules/bower/bin/bower install && npm run bundle",
     "start": "node node_modules/iced-coffee-script/bin/cake start",
     "test": "node node_modules/iced-coffee-script/bin/cake test"
   },

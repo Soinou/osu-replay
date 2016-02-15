@@ -14,8 +14,9 @@ public/uploads
 public/replays
 tmp
 
-# Logs directory
+# Logs
 logs
+*.log
 
 # Configurated .env
 .env

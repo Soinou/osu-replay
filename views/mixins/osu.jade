@@ -8,5 +8,10 @@ mixin beatmap(replay)
     a(href=replay.get_beatmap_link()) #{replay.beatmap.artist} - #{replay.beatmap.title}
 
 mixin mods(replay)
-    each mod in replay.get_mods()
-        img(src="/img/mods/" + mod + ".png" height="30px")
+    - var mods = replay.get_mods()
+
+    if mods.length == 0
+        p None
+    else
+        each mod in mods
+            img(src="/img/mods/" + mod + ".png" height="30px")

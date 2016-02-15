@@ -36,8 +36,8 @@ exports = module.exports = class ReplayStore
         @logger_.debug "Replay file uploaded, saving data to the store"
         replay.title = params.title or "No title"
         replay.description = params.description or "No description"
-        replay.created_at = moment()
-        replay.updated_at = moment()
+        replay.created_at = moment().format()
+        replay.updated_at = moment().format()
         await @store_.insert key, replay, esc(defer())
         @logger_.debug "Replay saved"
         callback null

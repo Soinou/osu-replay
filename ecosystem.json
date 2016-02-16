@@ -8,7 +8,8 @@
         // First application
         {
             "name": "osu-replay",
-            "script": "/usr/bin/npm start",
+            "script": "/usr/bin/npm",
+            "args": ["start"],
             "env": {},
             "env_production":
             {

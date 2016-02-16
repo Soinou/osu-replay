@@ -22,7 +22,7 @@ exports = module.exports = class Application
 
         # Setup some middleware
         @app_.use express.static "public"
-        @app_.use morgan "dev"
+        @app_.use morgan "tiny"
         @app_.use body_parser.urlencoded extended: false
         @app_.use body_parser.json()
         @app_.use express_validator()

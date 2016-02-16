@@ -5,11 +5,11 @@ exports = module.exports = class UserStore
     constructor: (@api_, store) ->
         @store_ = store.create "beatmaps"
 
-    get: (key, callback) ->
+    get: (key, mode, callback) ->
         esc = make_esc callback
         await @store_.find key, esc(defer(beatmap))
         if not beatmap?
-            await @api_.get_beatmaps h: key, esc(defer(beatmaps))
+            await @api_.get_beatmaps {h: key, m: mode}, esc(defer(beatmaps))
             if not beatmaps? then return callback null, null
             if beatmaps.length > 0
                 beatmap = beatmaps[0]

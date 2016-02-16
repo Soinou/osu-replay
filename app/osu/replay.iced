@@ -47,10 +47,10 @@ exports = module.exports = class ReplayFactory
     from_data: (data, callback) ->
         esc = make_esc callback
         @logger_.debug "Populating replay from store data, getting beatmap"
-        await @beatmaps_.get data.beatmap, esc(defer(beatmap))
+        await @beatmaps_.get data.beatmap, data.mode, esc(defer(beatmap))
         if not beatmap? then return callback new Error "Beatmap does not exist, please check the replay file"
         @logger_.debug "Got the beatmap, getting the player"
-        await @users_.get data.player, esc(defer(user))
+        await @users_.get data.player, data.mode, esc(defer(user))
         if not user? then return callback new Error "Player does not exist, please check the replay file"
         @logger_.debug "Got the player, returning the completed replay"
         data.beatmap = beatmap

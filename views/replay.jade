@@ -11,23 +11,24 @@ block content
         p Keep a save of your link, because if you lose it, you will not be able to get it back.
 
     .jumbotron
-        h1  #{replay.title}, #[small by #[+profile(replay)]] #[+avatar(replay)]
+        h1 #[+mode_icon(replay)] #{replay.title}, #[small by #[+profile(replay)]] #[+avatar(replay)]
         .row
-            .col-md-6
+            .row
 
                 br
-                p #[b Game mode:] #{replay.get_game_mode()}
+                p #[b Game mode: ] #{replay.get_game_mode()}
                 br
-                p #[b Beatmap:] #[+beatmap(replay)]
+                p #[b Beatmap: ] #[+beatmap(replay)]
                 br
-                p #[b Mods :] #[+mods(replay)]
+                p #[b Mods: ] #[+mods(replay)]
                 br
-                p #[b Score:] #{replay.score}
+                p #[b Score: ] #{replay.get_score()}
                 br
-                p #[b Combo max:] #{replay.combo}
+                p #[b Combo max: ] #{replay.get_combo()}
                 br
+                p #[b Accuracy: ] #{replay.get_accuracy()}%
 
-            .col-md-6
+            .row
                 br
                 .well
                     p #[b Description:] #{replay.description}
@@ -62,5 +63,9 @@ block scripts
             s.setAttribute('data-timestamp', +new Date());
             (d.head || d.body).appendChild(s);
         })();
+
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
 
     noscript Please enable JavaScript to view the #[a(href="https://disqus.com/?ref_noscript" rel="nofollow") comments powered by Disqus.]

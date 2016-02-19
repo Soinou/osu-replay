@@ -2,6 +2,7 @@ extend = require("util")._extend
 fs = require "fs-extra"
 {make_esc} = require "iced-error"
 mods = require "./mods"
+numeral = require "numeral"
 
 # Replay data wrapper, adding a few useful methods
 class Replay
@@ -23,6 +24,39 @@ class Replay
             when 1 then "fa osu fa-taiko-o"
             when 2 then "fa osu fa-fruits-o"
             when 3 then "fa osu fa-mania-o"
+
+    get_score: ->
+        return numeral(@score).format "0,0"
+
+    get_combo: ->
+        return numeral(@combo).format "0,0"
+
+    get_standard_accuracy: ->
+        points = @n_50 * 50 + @n_100 * 100 + @n_300 * 300
+        hits = (@misses + @n_50 + @n_100 + @n_300) * 300
+        return (points / hits * 100).toFixed 2
+
+    get_taiko_accuracy: ->
+        points = (@n_100 * 0.5 + @n_300) * 300
+        hits = (@misses + @n_100 + @n_300) * 300
+        return (points / hits * 100).toFixed 2
+
+    get_fruits_accuracy: ->
+        caught = @n_50 + @n_100 + @n_300
+        total = @misses + caught
+        return (caught / total * 100).toFixed 2
+
+    get_mania_accuracy: ->
+        points = @n_50 * 50 + @n_100 * 200 + @katus * 100 + @n_300 * 300 + @gekis * 300
+        hits = (@misses + @n_50 + @n_100 + @katus + @n_300 + @gekis) * 300
+        return (points / hits * 100).toFixed 2
+
+    get_accuracy: ->
+        switch @mode
+            when 0 then return @get_standard_accuracy()
+            when 1 then return @get_taiko_accuracy()
+            when 2 then return @get_fruits_accuracy()
+            when 3 then return @get_mania_accuracy()
 
     # Returns the list of mods present in this replay
     get_mods: ->

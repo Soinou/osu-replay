@@ -166,4 +166,4 @@ This is the data format of the osu! replays the front-end is getting. If you hav
 
 ## License
 
-License (WTFPL) is provided in the [LICENSE.md](https://github.com/Soinou/osu-replay/blob/master/LICENSE.md) file.
+License (WTFPL) is provided in the [LICENSE](https://github.com/Soinou/osu-replay/blob/master/LICENSE) file.

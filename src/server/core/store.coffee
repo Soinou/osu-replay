@@ -17,6 +17,8 @@ class MongoStore
             process.env.DB_PORT,
             process.env.DB_PATH
 
+        @logger.debug "Connecting MongoStore to url '" + url + "'"
+
         @collection_ = @mongojs(url, [@name_]).collection @name_
 
         @logger.debug "Created new MongoStore '" + @name_ + "'"

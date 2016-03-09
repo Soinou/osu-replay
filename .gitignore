@@ -4,6 +4,8 @@ node_modules
 # Bower components
 public/bower_components
 public/vendor
+public/js
+public/css
 
 # Output directory
 bin

@@ -1,0 +1,22 @@
+extends ../layouts/app
+
+include ../mixins/forms
+include ../mixins/utils
+
+block title
+
+block content
+    .jumbotron
+        h1 Create a new account - Step three
+
+        p Final step: Please enter a few additional informations
+
+        +form("user-three", "/users", "POST")
+            +password("user_password", "password", "Password")
+            +password("user_password_confirmation", "password_confirmation", "Password Confirmation")
+            +text("user_email", "email", "Email")
+            +submit("Create Account")
+
+block scripts
+    +script("/build/js/shared.js")
+    +script("/build/js/create_user_three.js")

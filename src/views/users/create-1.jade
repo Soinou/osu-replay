@@ -1,0 +1,23 @@
+extends ../layouts/app
+
+include ../mixins/forms
+include ../mixins/utils
+
+block title
+
+block content
+    .jumbotron
+        h1 Create a new account - Step one
+
+        p First step: Tell us your osu! username
+        p Please note that you will need to be logged in game, and must have enabled private messages from non-friends
+        p A private message with a code will be sent to the entered username
+        p You will then have to input this code to the next page
+
+        +form("user-one", "/users", "POST")
+            +text("user_username", "username", "User name")
+            +submit("Send Code")
+
+block scripts
+    +script("/build/js/shared.js")
+    +script("/build/js/create_user_one.js")

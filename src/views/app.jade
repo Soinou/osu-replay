@@ -1,0 +1,37 @@
+include mixins/utils
+
+doctype html
+html
+    head
+        //- Title
+        block title
+            title osu!Replay
+
+        //- Favicon
+        link(rel="icon" type="image/x-icon" href="/img/favicon.ico")
+
+        //- Application CSS
+        +stylesheet("/css/app.css")
+
+        //- Front end JS
+        +script("/js/lib.js")
+    body
+        //- Logo
+        center: a(href="/"): img(src="/img/logo.png" width="150px" height="150px")
+
+        //- A navbar here could be interesting
+
+        //- Content
+        #content.container
+            noscript: .jumbotron: center: h2 This website requires JavaScript, please enable it or nothing will work
+
+        //- Footer
+        center: p © 2016, osu!replay
+
+        //- Scripts
+        #scripts
+            //- Socket.io
+            +script("/socket.io/socket.io.js")
+
+            //- Bundled app
+            +script("/js/app.js")

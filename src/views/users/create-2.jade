@@ -1,0 +1,22 @@
+extends ../layouts/app
+
+include ../mixins/forms
+include ../mixins/utils
+
+block title
+
+block content
+    .jumbotron
+        h1 Create a new account - Step two
+
+        p Second step: Please enter the code sent to you by private message.
+        p If you did not receive the code, please go back and enter a valid username.
+
+        +form("user-two", "/users", "POST")
+            +text("user_code", "code", "Code")
+            a.btn.btn-danger(href="/users/create") Back
+            +submit("Check Code")
+
+block scripts
+    +script("/build/js/shared.js")
+    +script("/build/js/create_user_two.js")

@@ -25,33 +25,41 @@
     "url": "https://github.com/Soinou/osu-replay/issues"
   },
   "scripts": {
-    "bower": "node node_modules/bower/bin/bower install",
-    "bundle": "node node_modules/iced-coffee-script/bin/cake bundle",
-    "migrate": "node node_modules/iced-coffee-script/bin/cake migrate",
-    "start": "node node_modules/iced-coffee-script/bin/cake start",
-    "test": "node node_modules/iced-coffee-script/bin/cake test"
+    "bower": "gulp bower",
+    "start": "gulp",
+    "test": "gulp test"
   },
   "dependencies": {
+    "app-module-path": "^1.0.5",
     "body-parser": "^1.14.2",
     "bootstrap": "^3.3.6",
     "bower": "^1.7.7",
     "browserify": "^13.0.0",
-    "browserify-shim": "^3.8.12",
     "chalk": "^1.1.1",
+    "coffee-react": "^4.1.0",
+    "coffee-reactify": "^4.0.0",
+    "coffee-script": "^1.10.0",
     "collections": "^3.0.0",
+    "connect": "^3.4.1",
     "dotenv": "^2.0.0",
-    "electrolyte": "^0.2.0",
-    "express": "^4.13.4",
     "express-exceptions": "0.0.7",
+    "express-session": "^1.13.0",
     "express-validator": "^2.19.1",
+    "express.io": "^1.1.13",
     "fs-extra": "^0.26.5",
-    "iced-coffee-script": "^108.0.9",
-    "iced-error": "0.0.9",
-    "icsify": "^0.7.0",
+    "fs-extra-promise": "^0.3.1",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-if": "^2.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^2.2.0",
+    "gulp-uglify": "^1.5.3",
+    "gulp-util": "^3.0.7",
+    "irc": "^0.4.1",
     "jade": "^1.11.0",
     "jquery": "^2.2.0",
     "leb": "^0.3.0",
-    "minifyify": "^7.2.1",
+    "memwatch-next": "^0.2.10",
     "moment": "^2.11.2",
     "mongodb": "^2.1.7",
     "mongojs": "^2.3.0",
@@ -59,23 +67,20 @@
     "multer": "^1.1.0",
     "node-int64": "^0.4.0",
     "node-sass": "^3.5.0-beta.1",
-    "node-uuid": "^1.4.7",
     "numeral": "^1.5.3",
+    "promise": "^7.1.1",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "react-router": "^2.0.0",
+    "require-dir": "^0.3.0",
     "s3": "^4.4.0",
-    "shortid": "^2.2.4"
+    "shortid": "^2.2.4",
+    "validator": "^5.1.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^2.4.5"
-  },
-  "browser": {
-    "jquery": "resources/vendor/jquery/dist/jquery.js",
-    "bootstrap": "resources/vendor/bootstrap/dist/js/bootstrap.js"
-  },
-  "browserify-shim": {
-    "jquery": "$",
-    "bootstrap": {
-      "depends": "jquery"
-    }
   }
 }

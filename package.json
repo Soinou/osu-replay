@@ -25,7 +25,7 @@
     "url": "https://github.com/Soinou/osu-replay/issues"
   },
   "scripts": {
-    "bower": "node node_modules/bower/bin/bower install",
+    "postinstall": "node node_modules/gulp/bin/gulp client",
     "start": "node node_modules/coffee-script/bin/coffee src/server/index.coffee",
     "test": "gulp test"
   },

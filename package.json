@@ -69,6 +69,7 @@
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-router": "^2.0.0",
+    "require-dir": "^0.3.0",
     "s3": "^4.4.0",
     "shortid": "^2.2.4",
     "validator": "^5.1.0",

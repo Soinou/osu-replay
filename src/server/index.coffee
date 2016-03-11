@@ -1,8 +1,11 @@
 # Setup relative paths
 require("app-module-path").addPath("src/server")
 
-# Setup dotenv
-require("dotenv").config()
+try
+    # Setup dotenv
+    require("dotenv").config()
+catch e
+    # Doesn't matter
 
 pretty = require "core/pretty"
 

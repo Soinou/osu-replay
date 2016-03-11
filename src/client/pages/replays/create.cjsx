@@ -99,7 +99,7 @@ module.exports = class Create extends React.Component
 
         onFile = (value, error) =>
             if error then errors.push error
-            if errors.length > 0 then return
+            if errors.length > 0 then return @setState {waiting:false}
             reader.readAsDataURL value
 
         onDescription = (value, error) =>

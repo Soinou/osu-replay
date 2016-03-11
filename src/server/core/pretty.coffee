@@ -10,7 +10,6 @@ class Pretty
             "express",
             "express-session",
             "express-validator",
-            "morgan",
             "send",
             "socket.io"
         ]

@@ -16,7 +16,6 @@ try
     # Libraries
     kernel.library "body_parser", "body-parser"
     kernel.library "chalk"
-    kernel.library "exceptions", "express-exceptions"
     kernel.library "express", "express.io"
     kernel.library "express_validator", "express-validator"
     kernel.library "fs", "fs-extra-promise"
@@ -27,7 +26,6 @@ try
     kernel.library "memwatch", "memwatch-next"
     kernel.library "moment"
     kernel.library "mongojs"
-    kernel.library "morgan"
     kernel.library "numeral"
     kernel.library "on_finished", "on-finished"
     kernel.library "on_headers", "on-headers"
@@ -37,7 +35,6 @@ try
     kernel.library "s3"
     kernel.library "session", "express-session"
     kernel.library "shortid"
-    kernel.library "socket_io", "socket.io"
     kernel.library "util"
     kernel.library "validator"
 

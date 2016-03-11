@@ -1,22 +1,17 @@
 module.exports = class Application
 
     dependencies: -> [
-        "body_parser",
-        "exceptions",
+        "ErrorMiddleware",
         "express",
-        "http",
+        "GeneralMiddleware",
         "irc",
         "logger",
-        "ErrorMiddleware",
-        "SessionMiddleware",
         "LogMiddleware",
-        "GeneralMiddleware",
         "MainController",
         "memwatch",
-        "morgan",
         "Promise",
         "ReplaysController",
-        "socket_io",
+        "SessionMiddleware",
         "UsersController"
     ]
 

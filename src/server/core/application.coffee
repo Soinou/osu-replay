@@ -8,7 +8,6 @@ module.exports = class Application
         "logger",
         "LogMiddleware",
         "MainController",
-        "memwatch",
         "Promise",
         "ReplaysController",
         "SessionMiddleware",
@@ -18,8 +17,6 @@ module.exports = class Application
     initialized: ->
         @app_ = @express()
         @app_.http().io()
-        @memwatch.on "leak", @onLeak
-        @memwatch.on "stats", @onStats
 
     setup: ->
         # Middleware
@@ -48,9 +45,3 @@ module.exports = class Application
 
     # Stops the application
     stop: -> @server_.close()
-
-    onLeak: (info) =>
-        @logger.warning "Memory leak: " + info.toString()
-
-    onStats: (stats) =>
-        @logger.debug "Heap stats: " + stats.toString()

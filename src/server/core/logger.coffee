@@ -3,7 +3,7 @@ module.exports = class Logger
 
     @format: "[%s][%s] %s"
 
-    dependencies: -> ["chalk", "fs", "moment", "os", "pretty", "util"]
+    dependencies: -> ["chalk", "fs", "memwatch", "moment", "os", "pretty", "util"]
 
     initialized: ->
         # Logs directory
@@ -11,16 +11,40 @@ module.exports = class Logger
         if not @fs.existsSync @directory_
             @fs.mkdirSync @directory_
 
+        if process.env.NODE_ENV is "production"
+            @_log = @_production
+        else
+            @_log = @_development
+
+        # Memwatch
+        @memwatch.on "leak", (info) =>
+            @warning "Memory leak: " + JSON.stringify info
+        @memwatch.on "stats", (stats) =>
+            @debug "Heap stats: " + JSON.stringify stats
+
         # Error
         process.on "uncaughtException", (err) =>
             @fatal "Uncaught exception:", err
-
         process.on "unhandledRejection", (err) =>
             @fatal "Unhandled rejection", err
 
-    # Internal logging
-    # Logs to a log file and to the console
-    _log: (message, status, color, err) ->
+    _production: (message, status, color, err) =>
+        hour = @moment().format "HH:mm:ss"
+        day = @moment().format "YYYY-MM-DD"
+        file = @directory_ + "/" + day + ".log"
+
+        uncolored = "[" + hour + "]"
+        uncolored += "[" + status + "] "
+        uncolored += message
+
+        if err? then uncolored += @os.EOL + err.stack
+
+        console.log uncolored
+        @fs.appendFileAsync file, uncolored
+        .catch (err) =>
+            console.log "Couldn't write to log file:", @pretty.render err
+
+    _development: (message, status, color, err) ->
         hour = @moment().format "HH:mm:ss"
         day = @moment().format "YYYY-MM-DD"
         file = @directory_ + "/" + day + ".log"
@@ -35,7 +59,7 @@ module.exports = class Logger
 
         if err?
             colored += @os.EOL + @pretty.render err
-            uncolored += err.stack
+            uncolored += @os.EOL + err.stack
 
         console.log colored
         @fs.appendFileAsync file, uncolored

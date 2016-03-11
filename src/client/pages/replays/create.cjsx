@@ -11,9 +11,9 @@ module.exports = class Create extends React.Component
     @contextTypes: {router: React.PropTypes.object}
 
     constructor: ->
-        @socket_ = io.connect()
-
         @state = waiting: false
+
+        @socket_ = io.connect()
 
         @socket_.on "replays:created", @onSavedReplay
 

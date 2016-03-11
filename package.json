@@ -1,6 +1,6 @@
 {
   "name": "osu!replay",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Website to upload osu! replays and share them easily",
   "main": "app/index.iced",
   "license": "WTFPL",

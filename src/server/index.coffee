@@ -1,9 +1,6 @@
 # Setup relative paths
 require("app-module-path").addPath "src/server"
 
-# Setup dotenv
-if require("fs").existsSync ".env" then require("dotenv").config()
-
 pretty = require "core/pretty"
 
 try
@@ -16,6 +13,7 @@ try
     # Libraries
     kernel.library "body_parser", "body-parser"
     kernel.library "chalk"
+    kernel.library "dotenv"
     kernel.library "express", "express.io"
     kernel.library "express_validator", "express-validator"
     kernel.library "fs", "fs-extra-promise"

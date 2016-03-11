@@ -17,7 +17,6 @@ module.exports = class Application
 
     initialized: ->
         @app_ = @express()
-        @server_ = @http.Server @app_
         @app_.http().io()
 
     setup: ->
@@ -40,7 +39,7 @@ module.exports = class Application
         else bind = 5000
 
         listen = new Promise (resolve, reject) =>
-            @server_.listen bind, (err) -> if err then reject err else resolve()
+            @app_.listen bind, (err) -> if err then reject err else resolve()
 
         listen.then (server) =>
             @logger.debug "Application listening on " + bind
@@ -48,4 +47,4 @@ module.exports = class Application
         .catch (err) => @logger.fatal "Application couldn't start: ", err
 
     # Stops the application
-    stop: -> @server_.close()
+    stop: -> @app_.server.close()

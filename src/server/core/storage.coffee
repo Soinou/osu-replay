@@ -7,8 +7,8 @@ class S3Storage
     ]
 
     initialized: ->
-        @bucket_ = process.env.S3_BUCKET;
-        @region_ = process.env.S3_REGION;
+        @bucket_ = process.env.S3_BUCKET
+        @region_ = process.env.S3_REGION
         options =
             s3Options:
                 accessKeyId: process.env.S3_ID,
@@ -16,7 +16,7 @@ class S3Storage
                 region: this.region_,
                 endpoint: process.env.S3_ENDPOINT
         @client_ = @s3.createClient options
-        @logger.debug "Amazon S3 Storage service successfully initialized"
+        @logger.debug "S3Storage created successfully"
 
     upload: (file_path, file_name, callback) ->
         params =
@@ -47,7 +47,7 @@ class LocalStorage
 
     initialized: ->
         @fs.ensureDirSync "public/replays"
-        @logger.debug "Local storage created successfully"
+        @logger.debug "LocalStorage created successfully"
 
     upload: (file_path, file_name) ->
         @logger.debug "Moving file to replays directory"

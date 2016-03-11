@@ -23,13 +23,13 @@ module.exports = class Client
         @interval_ = setInterval @on_interval, 1000
 
     on_error: (message) =>
-        logger.error message
+        @logger.error message
 
     on_message: (from, to, message) =>
-        logger.info "[" + to + "] " + from + ": " + message
+        @logger.info "[" + to + "] " + from + ": " + message
 
     on_private_message: (from, message) =>
-        logger.info "[PRIVMSG] " + from + ": " + message
+        @logger.info "[PRIVMSG] " + from + ": " + message
 
     on_interval: =>
         count = 5

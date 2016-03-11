@@ -23,11 +23,11 @@ class Type
         instance = new @file_ args...
 
         if instance.created
-                instance.created()
+            instance.created()
 
         if instance.dependencies?
             for dependency in instance.dependencies()
-                instance[dependency] = kernel.resolve dependency, name
+                instance[dependency] = kernel.get dependency, name
 
         if instance.initialized
             instance.initialized()
@@ -86,8 +86,7 @@ class Kernel
     service: (name, path) ->
         @components_[name] = new Service path
 
-    resolve: (name, asker) ->
-        asker = asker or "Main"
+    get: (name, asker) ->
         component = @components_[name]
 
         if not component?
@@ -97,5 +96,12 @@ class Kernel
             throw new Error message
 
         return component.get this, name
+
+    resolve: (name) ->
+        try
+            return @get name, "Main"
+        catch err
+            throw new Error err.message
+
 
 module.exports = new Kernel

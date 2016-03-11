@@ -1,12 +1,22 @@
 # Represents a simple logger
 module.exports = class Logger
 
-    dependencies: -> ["chalk", "fs", "moment", "os"]
+    @format: "[%s][%s] %s"
+
+    dependencies: -> ["chalk", "fs", "moment", "os", "pretty", "util"]
 
     initialized: ->
+        # Logs directory
         @directory_ = "logs"
         if not @fs.existsSync @directory_
             @fs.mkdirSync @directory_
+
+        # Error
+        process.on "uncaughtException", (err) =>
+            @fatal "Uncaught exception:", err
+
+        process.on "unhandledRejection", (err) =>
+            @fatal "Unhandled rejection", err
 
     # Internal logging
     # Logs to a log file and to the console
@@ -14,12 +24,24 @@ module.exports = class Logger
         hour = @moment().format "HH:mm:ss"
         day = @moment().format "YYYY-MM-DD"
         file = @directory_ + "/" + day + ".log"
-        colored = hour + " [" + color(status) + "] " + message
-        uncolored = hour + " [" + status + "] " + message + @os.EOL
+
+        colored = "[" + @chalk.grey(hour) + "]"
+        colored += "[" + color(status) + "] "
+        colored += message
+
+        uncolored = "[" + hour + "]"
+        uncolored += "[" + status + "] "
+        uncolored += message
+
+        if err?
+            colored += @os.EOL + @pretty.render err
+            uncolored += err.stack
+
         console.log colored
-        if err? then console.log err.stack
         @fs.appendFileAsync file, uncolored
-        .catch (err) -> console.log "Couldn't write to log file:", err
+
+        .catch (err) =>
+            console.log "Couldn't write to log file:", @pretty.render err
 
     # Logs a debug message (Level 0)
     debug: (message, err) ->

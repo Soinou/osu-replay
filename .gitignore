@@ -6,6 +6,7 @@ public/bower_components
 public/vendor
 public/js
 public/css
+public/*.html
 
 # Output directory
 bin

@@ -13,7 +13,7 @@ html
         //- Application CSS
         +stylesheet("/css/app.css")
 
-        //- Front end JS
+        //- JS Libraries
         +script("/js/lib.js")
     body
         //- Logo
@@ -23,15 +23,17 @@ html
 
         //- Content
         #content.container
+            block content
             noscript: .jumbotron: center: h2 This website requires JavaScript, please enable it or nothing will work
 
         //- Footer
         center: p © 2016, osu!replay
 
         //- Scripts
-        #scripts
-            //- Socket.io
-            +script("/socket.io/socket.io.js")
+        block scripts
+            #scripts
+                //- Socket.io
+                +script("/socket.io/socket.io.js")
 
-            //- Bundled app
-            +script("/js/app.js")
+                //- Bundled app
+                +script("/js/app.js")

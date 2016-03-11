@@ -22,10 +22,10 @@ module.exports = class Rules
             else return null
 
     email: (message) ->
-        (value) -> @check @validator.isEmail, message, value, {}
+        (value) => @check @validator.isEmail, message, value, {}
 
     between: (min, max, message) ->
-        (value) -> @check @validator.isLength, message, value, {min: min, max: max}
+        (value) => @check @validator.isLength, message, value, {min: min, max: max}
 
     size64: (max, message) ->
         (value) ->

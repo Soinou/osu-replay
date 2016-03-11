@@ -12,11 +12,10 @@ module.exports = class UsersController
 
     # Installs the controller to the given express app
     install: (app) ->
-        @logger.debug "UsersController installed"
 
+    ###
     # GET /users
-    _index: (req, res) =>
-        res.redirect "/"
+    _index: (req, res) -> res.redirect "/"
 
     # GET /users/create
     _create: (req, res) =>
@@ -75,19 +74,11 @@ module.exports = class UsersController
     _store_three: (req, res) =>
         req.session.step = 3
 
-        req.check("password", "Password must not be empty").notEmpty()
-        req.check("password", "Password must be 6-30 characters long").isLength({min: 7, max: 14})
-        req.check("password_confirmation", "Password confirmation must not be empty").notEmpty()
-        req.check("password_confirmation", "Password confirmation must be 6-30 characters long").isLength({min: 7, max: 14})
-        req.check("email", "Email must not be empty").notEmpty()
-        req.check("email", "Email must be a valid email").isEmail()
-
         # Validate inputs
         errors = req.validationErrors(true)
 
         if req.body.password isnt req.body.password_confirmation
             errors = errors or {}
-            errors.code = {param: "password_confirmation", msg: "Password confirmation does not match password", value: req.body.password_confirmation}
 
         if errors then return res.status(422).render "users/create-3", errors: errors
 
@@ -127,3 +118,4 @@ module.exports = class UsersController
                 socket.emit "good_code"
             else
                 socket.emit "bad_code"
+    ###

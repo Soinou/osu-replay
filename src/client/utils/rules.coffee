@@ -18,12 +18,12 @@ class Rules
         (value) => @check validator.isLength, message, value, {min: min, max: max}
 
     size: (max, message) ->
-        (value) =>
+        (value) ->
             if value.size > max then return message
             else return false
 
     extension: (extension, message) ->
-        (value) =>
+        (value) ->
             if not value.name.endsWith extension then return message
             else return false
 

@@ -7,8 +7,6 @@ module.exports = class ReplaysController
     install: (app) ->
         app.io.route "replays", {get: @_get, create: @_create}
 
-        @logger.debug "ReplaysController installed"
-
     # replays:get
     _get: (req) =>
         # Get the replay id
@@ -16,7 +14,7 @@ module.exports = class ReplaysController
 
         @logger.debug "Searching for replay \"" + key + "\""
         @replays.get key
-        .then (replay) => req.io.emit "replays:got", replay
+        .then (replay) -> req.io.emit "replays:got", replay
         .catch (err) =>
             req.io.emit "replays:got", null
             @logger.error "Couldn't get replay \"" + key + "\"", err

@@ -1,4 +1,6 @@
+var coffeelint = require("gulp-coffeelint");
 var gulp = require("gulp");
+var gutil = require("gulp-util");
 var path = require("path");
 var spawn = require("child_process").spawn;
 var utils = require("../utils");
@@ -23,14 +25,21 @@ var server = {
         // Print something on close
         this.child.on("close", function(code)
         {
-            console.log("Server stopped");
+            gutil.log(gutil.colors.red.underline("Server has stopped"));
         });
     }
 };
 
+gulp.task("server:lint", function()
+{
+    return gulp.src("src/**/*.coffee")
+        .pipe(coffeelint("coffeelint.json"))
+        .pipe(coffeelint.reporter());
+});
+
 gulp.task("server:start", function()
 {
-    server.start([
+    return server.start([
         "node_modules/coffee-script/bin/coffee",
         "src/server/index.coffee",
         "--color"
@@ -39,7 +48,8 @@ gulp.task("server:start", function()
 
 gulp.task("server:watch", function()
 {
-     return gulp.watch("src/server/**/*", ["server:start"]);
+    gulp.watch("src/**/*.coffee", ["server:lint"]);
+    return gulp.watch("src/server/**/*", ["server:start"]);
 });
 
-gulp.task("server", ["server:start", "server:watch"]);
+gulp.task("server", ["server:lint", "server:start", "server:watch"]);

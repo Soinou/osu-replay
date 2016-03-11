@@ -17,11 +17,9 @@ class MongoStore
             process.env.DB_PORT,
             process.env.DB_PATH
 
-        @logger.debug "Connecting MongoStore to url '" + url + "'"
-
         @collection_ = @mongojs(url, [@name_]).collection @name_
 
-        @logger.debug "Created new MongoStore '" + @name_ + "'"
+        @logger.debug "MongoStore '" + @name_ + "' created successfully"
 
     all: ->
         return new @Promise (resolve, reject) =>
@@ -63,7 +61,7 @@ class LocalStore
 
     initialized: ->
         @collection_ = @Dict.create()
-        @logger.debug "Created new LocalStore '" + @name_ + "'"
+        @logger.debug "LocalStore '" + @name_ + "' created successfully"
 
     all: -> @Promise.resolve @collection_.values()
 

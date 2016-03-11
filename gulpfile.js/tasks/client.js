@@ -2,10 +2,18 @@ var browserify = require("browserify");
 var buffer = require("vinyl-buffer");
 var concat = require("gulp-concat");
 var gulp = require("gulp");
+var jade = require("gulp-jade");
 var path = require("path");
 var coffeeify = require("coffee-reactify");
 var source = require("vinyl-source-stream");
 var utils = require("../utils");
+
+gulp.task("client:views", function()
+{
+    return gulp.src("src/views/*.jade")
+    .pipe(jade())
+    .pipe(gulp.dest("public"));
+});
 
 gulp.task("client:style", function()
 {
@@ -51,11 +59,13 @@ gulp.task("client:app", function ()
 
 gulp.task("client:watch", function()
 {
+    gulp.watch("src/views/**/*.jade", ["client:views"]);
     gulp.watch("src/style/**/*.sass", ["client:style"]);
     return gulp.watch(["src/client/**/*"], ["client:app"]);
 });
 
 gulp.task("client", [
+    "client:views",
     "client:style",
     "client:lib",
     "client:app",

@@ -33,7 +33,9 @@ module.exports = class Application
         @ErrorMiddleware.install @app_
 
     start: ->
-        bind = process.env.BIND or 5000
+        if process.env.PORT? then bind = process.env.PORT
+        else if process.env.SOCKET? then bind = process.env.SOCKET
+        else bind = 5000
 
         listen = new Promise (resolve, reject) =>
             @app_.listen bind, (err) -> if err then reject err else resolve()
@@ -44,4 +46,5 @@ module.exports = class Application
         .catch (err) => @logger.fatal "Application couldn't start: ", err
 
     # Stops the application
-    stop: -> @server_.close()
+    stop: ->
+        @app_.close()

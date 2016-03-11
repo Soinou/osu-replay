@@ -11,10 +11,11 @@ module.exports = class Logger
         if not @fs.existsSync @directory_
             @fs.mkdirSync @directory_
 
-        if process.env.NODE_ENV is "production"
-            @_log = @_production
-        else
-            @_log = @_development
+        switch process.env.NODE_ENV
+            # Production and staging both disable colored output
+            when "production" then @_log = @_production
+            when "staging" then @_log = @_production
+            else @_log = @_development
 
         # Memwatch
         @memwatch.on "leak", (info) =>

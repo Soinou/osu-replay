@@ -6,3 +6,8 @@ gulp.task("default", [
     "client",
     "server"
 ]);
+
+gulp.task("watch", [
+    "client:watch",
+    "server:watch"
+]);

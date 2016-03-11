@@ -1,5 +1,6 @@
 var browserify = require("browserify");
 var buffer = require("vinyl-buffer");
+var child_process = require("child_process");
 var concat = require("gulp-concat");
 var gulp = require("gulp");
 var jade = require("gulp-jade");
@@ -8,6 +9,17 @@ var coffeeify = require("coffee-reactify");
 var source = require("vinyl-source-stream");
 var utils = require("../utils");
 
+gulp.task("client:bower", function(callback)
+{
+    command = "node node_modules/bower/bin/bower install";
+
+    var child = child_process.exec(command);
+
+    child.stdout.pipe(process.stdout);
+
+    child.on("exit", callback);
+});
+
 gulp.task("client:views", function()
 {
     return gulp.src("src/views/*.jade")
@@ -15,7 +27,7 @@ gulp.task("client:views", function()
     .pipe(gulp.dest("public"));
 });
 
-gulp.task("client:style", function()
+gulp.task("client:style", ["client:bower"], function()
 {
     return gulp.src("src/style/app.sass")
         .on("error", utils.error("client:style"))
@@ -24,7 +36,7 @@ gulp.task("client:style", function()
         .pipe(gulp.dest("public/css"));
 });
 
-gulp.task("client:lib", function()
+gulp.task("client:lib", ["client:bower"], function()
 {
     var files = [
         "src/style/vendor/jquery/dist/jquery.js",
@@ -57,17 +69,16 @@ gulp.task("client:app", function ()
         .pipe(gulp.dest("public/js"));
 });
 
-gulp.task("client:watch", function()
+gulp.task("client", [
+    "client:views",
+    "client:style",
+    "client:lib",
+    "client:app"
+]);
+
+gulp.task("client:watch", ["client"], function()
 {
     gulp.watch("src/views/**/*.jade", ["client:views"]);
     gulp.watch("src/style/**/*.sass", ["client:style"]);
     return gulp.watch(["src/client/**/*"], ["client:app"]);
 });
-
-gulp.task("client", [
-    "client:views",
-    "client:style",
-    "client:lib",
-    "client:app",
-    "client:watch"
-]);

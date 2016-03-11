@@ -54,10 +54,10 @@ gulp.task("server:start", function()
     ]);
 });
 
-gulp.task("server:watch", function()
+gulp.task("server", ["server:lint", "server:start"]);
+
+gulp.task("server:watch", ["server"], function()
 {
     gulp.watch("src/**/*.coffee", ["server:lint"]);
     return gulp.watch("src/server/**/*", ["server:start"]);
 });
-
-gulp.task("server", ["server:lint", "server:start", "server:watch"]);

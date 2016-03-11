@@ -25,7 +25,15 @@ var server = {
         // Print something on close
         this.child.on("close", function(code)
         {
-            gutil.log(gutil.colors.red.underline("Server has stopped"));
+            if(code != 0)
+            {
+                gutil.log(gutil.colors.red.underline("Server has crashed"));
+                process.exit(0);
+            }
+            else
+            {
+                gutil.log(gutil.colors.red.underline("Server has stopped"));
+            }
         });
     }
 };

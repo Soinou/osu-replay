@@ -5,6 +5,7 @@ module.exports = class ReplaysController
 
     # Installs the controller to the given express app
     install: (app) ->
+        @fs.ensureDirSync "tmp/uploads"
         app.io.route "replays", {get: @_get, create: @_create}
 
     # replays:get

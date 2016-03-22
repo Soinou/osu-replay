@@ -10,7 +10,9 @@ It's a simple website where you can upload your osu! replays and share them. As 
 
 ## Where do I see it?
 
-The website is deployed frequently on [Heroku](http://osu-replay.herokuapp.com) though it's pretty much in development and replays might be wiped sometimes.
+A development version is available on [Heroku](http://dev.osu-replay.info), where every push is sent in real-time. Please note that any replay uploaded to it will be removed at the next update.
+
+The production version is available [Here](http://osu-replay.info), but is updated from time to time, when everything is fully tested (Some bugs may persist though).
 
 ## How do I build it?
 
@@ -37,7 +39,7 @@ Once everything is installed, and correctly in your PATH:
     cd osu-replay
     # Install all npm dependencies
     npm install
-    # Run the server the first time
+    # Run the server
     npm start
 
 The first time the server is started, it will ask you to setup the .env file. This file will be at the root of the directory.

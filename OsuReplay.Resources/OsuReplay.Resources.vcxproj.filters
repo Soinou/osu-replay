@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="client">
+      <UniqueIdentifier>{d6ac09ab-a185-469b-a938-9598210dae79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="style">
+      <UniqueIdentifier>{753be686-5a21-4695-b3ea-56786d3bdfd5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="views">
+      <UniqueIdentifier>{b51e1de4-1fc1-48a4-9a56-8f7ece92c0bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gulpfile">
+      <UniqueIdentifier>{58272f3d-3511-4237-bdb2-ea30247bc648}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="build">
+      <UniqueIdentifier>{e5a47ae6-7232-472c-88aa-dcab5716913f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="views\mixins">
+      <UniqueIdentifier>{bf6f6d06-389a-4c7c-acc6-97353d9ea7f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gulpfile\tasks">
+      <UniqueIdentifier>{1230586c-adc3-4ea8-bd20-fcee48b4bfd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="client\utils">
+      <UniqueIdentifier>{12dccac0-1eb1-4d86-8793-66a5a6c6beac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="client\pages">
+      <UniqueIdentifier>{81bfa84d-9ec2-4af9-b044-4c48fed33d87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="client\pages\replays">
+      <UniqueIdentifier>{a1bb758c-a386-488c-9449-f696c5fa2cc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="client\components">
+      <UniqueIdentifier>{a534fe82-b479-4968-b223-7bfac51e4d7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="client\osu">
+      <UniqueIdentifier>{93fa686d-f2b7-44ae-b4d1-62fe301ca36d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="client\components\osu">
+      <UniqueIdentifier>{ee87f093-f6eb-4615-93dd-c70dddf1ecf7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="client\components\bootstrap">
+      <UniqueIdentifier>{ea78769b-108a-4a5b-8c39-d500f3fad334}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="build.bat">
+      <Filter>build</Filter>
+    </None>
+    <None Include="clean.bat">
+      <Filter>build</Filter>
+    </None>
+    <None Include="start.bat">
+      <Filter>build</Filter>
+    </None>
+    <None Include="views\error.jade">
+      <Filter>views</Filter>
+    </None>
+    <None Include="views\index.jade">
+      <Filter>views</Filter>
+    </None>
+    <None Include="views\mixins\utils.jade">
+      <Filter>views\mixins</Filter>
+    </None>
+    <None Include="style\_core.sass">
+      <Filter>style</Filter>
+    </None>
+    <None Include="style\_fonts.sass">
+      <Filter>style</Filter>
+    </None>
+    <None Include="style\_icons.sass">
+      <Filter>style</Filter>
+    </None>
+    <None Include="style\_mixins.sass">
+      <Filter>style</Filter>
+    </None>
+    <None Include="style\_variables.sass">
+      <Filter>style</Filter>
+    </None>
+    <None Include="style\app.sass">
+      <Filter>style</Filter>
+    </None>
+    <None Include="gulpfile.js\index.js">
+      <Filter>gulpfile</Filter>
+    </None>
+    <None Include="gulpfile.js\utils.js">
+      <Filter>gulpfile</Filter>
+    </None>
+    <None Include="gulpfile.js\tasks\client.js">
+      <Filter>gulpfile\tasks</Filter>
+    </None>
+    <None Include="client\index.cjsx">
+      <Filter>client</Filter>
+    </None>
+    <None Include="client\utils\rules.coffee">
+      <Filter>client\utils</Filter>
+    </None>
+    <None Include="client\pages\replays\create.cjsx">
+      <Filter>client\pages\replays</Filter>
+    </None>
+    <None Include="client\pages\replays\show.cjsx">
+      <Filter>client\pages\replays</Filter>
+    </None>
+    <None Include="client\pages\404.cjsx">
+      <Filter>client\pages</Filter>
+    </None>
+    <None Include="client\osu\mods.coffee">
+      <Filter>client\osu</Filter>
+    </None>
+    <None Include="client\osu\replay.coffee">
+      <Filter>client\osu</Filter>
+    </None>
+    <None Include="client\components\bootstrap\alert.cjsx">
+      <Filter>client\components\bootstrap</Filter>
+    </None>
+    <None Include="client\components\bootstrap\button.cjsx">
+      <Filter>client\components\bootstrap</Filter>
+    </None>
+    <None Include="client\components\bootstrap\link.cjsx">
+      <Filter>client\components\bootstrap</Filter>
+    </None>
+    <None Include="client\components\osu\avatar.cjsx">
+      <Filter>client\components\osu</Filter>
+    </None>
+    <None Include="client\components\osu\beatmap_link.cjsx">
+      <Filter>client\components\osu</Filter>
+    </None>
+    <None Include="client\components\osu\game_mode_icon.cjsx">
+      <Filter>client\components\osu</Filter>
+    </None>
+    <None Include="client\components\osu\mod_icon.cjsx">
+      <Filter>client\components\osu</Filter>
+    </None>
+    <None Include="client\components\osu\mods.cjsx">
+      <Filter>client\components\osu</Filter>
+    </None>
+    <None Include="client\components\osu\profile_link.cjsx">
+      <Filter>client\components\osu</Filter>
+    </None>
+    <None Include="client\components\osu\replay.cjsx">
+      <Filter>client\components\osu</Filter>
+    </None>
+    <None Include="client\components\osu\replay_title.cjsx">
+      <Filter>client\components\osu</Filter>
+    </None>
+    <None Include="client\components\control.cjsx">
+      <Filter>client\components</Filter>
+    </None>
+    <None Include="client\components\input.cjsx">
+      <Filter>client\components</Filter>
+    </None>
+    <None Include="client\components\wait_icon.cjsx">
+      <Filter>client\components</Filter>
+    </None>
+    <None Include="views\missing.jade">
+      <Filter>views</Filter>
+    </None>
+  </ItemGroup>
+</Project>

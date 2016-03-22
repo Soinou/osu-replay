@@ -1,0 +1,19 @@
+{
+    "name": "osu!replay",
+    "description": "",
+    "license": "WTFPL",
+    "homepage": "http://osu-replay.info",
+    "private": true,
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "Style/vendor",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "bootstrap": "^3.3.6",
+        "font-awesome": "~4.5.0",
+        "bootswatch-sass": "~3.3.1"
+    }
+}

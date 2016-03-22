@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="build.bat" />
+    <None Include="clean.bat" />
+    <None Include="client\components\bootstrap\alert.cjsx" />
+    <None Include="client\components\bootstrap\button.cjsx" />
+    <None Include="client\components\bootstrap\link.cjsx" />
+    <None Include="client\components\control.cjsx" />
+    <None Include="client\components\input.cjsx" />
+    <None Include="client\components\osu\avatar.cjsx" />
+    <None Include="client\components\osu\beatmap_link.cjsx" />
+    <None Include="client\components\osu\game_mode_icon.cjsx" />
+    <None Include="client\components\osu\mods.cjsx" />
+    <None Include="client\components\osu\mod_icon.cjsx" />
+    <None Include="client\components\osu\profile_link.cjsx" />
+    <None Include="client\components\osu\replay.cjsx" />
+    <None Include="client\components\osu\replay_title.cjsx" />
+    <None Include="client\components\wait_icon.cjsx" />
+    <None Include="client\index.cjsx" />
+    <None Include="client\osu\mods.coffee" />
+    <None Include="client\osu\replay.coffee" />
+    <None Include="client\pages\404.cjsx" />
+    <None Include="client\pages\replays\create.cjsx" />
+    <None Include="client\pages\replays\show.cjsx" />
+    <None Include="client\utils\rules.coffee" />
+    <None Include="gulpfile.js\index.js" />
+    <None Include="gulpfile.js\tasks\client.js" />
+    <None Include="gulpfile.js\utils.js" />
+    <None Include="start.bat" />
+    <None Include="style\app.sass" />
+    <None Include="style\_core.sass" />
+    <None Include="style\_fonts.sass" />
+    <None Include="style\_icons.sass" />
+    <None Include="style\_mixins.sass" />
+    <None Include="style\_variables.sass" />
+    <None Include="views\error.jade" />
+    <None Include="views\index.jade" />
+    <None Include="views\missing.jade" />
+    <None Include="views\mixins\utils.jade" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{2FF4FDB1-234C-41F6-8403-2FD1ECFE3627}</ProjectGuid>
+    <Keyword>MakeFileProj</Keyword>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <NMakeBuildCommandLine>build.bat $(Configuration)</NMakeBuildCommandLine>
+    <NMakeOutput>start.bat $(Configuration)</NMakeOutput>
+    <NMakeCleanCommandLine>clean.bat $(Configuration)</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>build.bat $(Configuration)</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>WIN32;_DEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <OutDir>bin\$(Configuration)\</OutDir>
+    <IntDir>bin\$(Configuration)\.tmp\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <NMakeBuildCommandLine>build.bat $(Configuration)</NMakeBuildCommandLine>
+    <NMakeOutput>start.bat $(Configuration)</NMakeOutput>
+    <NMakeCleanCommandLine>clean.bat $(Configuration)</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>build.bat $(Configuration)</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>WIN32;NDEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <OutDir>bin\$(Configuration)\</OutDir>
+    <IntDir>bin\$(Configuration)\.tmp\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>bin\$(Configuration)\</OutDir>
+    <IntDir>bin\$(Configuration)\.tmp\</IntDir>
+    <NMakeBuildCommandLine>build.bat $(Configuration)</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>build.bat $(Configuration)</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>clean.bat $(Configuration)</NMakeCleanCommandLine>
+    <NMakeOutput>start.bat $(Configuration)</NMakeOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>bin\$(Configuration)\</OutDir>
+    <IntDir>bin\$(Configuration)\.tmp\</IntDir>
+    <NMakeBuildCommandLine>build.bat $(Configuration)</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>build.bat $(Configuration)</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>clean.bat $(Configuration)</NMakeCleanCommandLine>
+    <NMakeOutput>start.bat $(Configuration)</NMakeOutput>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -26,13 +26,13 @@ gulp.task("client:bower", function (callback) {
 });
 
 gulp.task("client:views", function () {
-    return gulp.src("Views/*.jade")
+    return gulp.src("views/*.jade")
     .pipe(jade())
     .pipe(utils.dest("public"));
 });
 
 gulp.task("client:style", ["client:bower"], function () {
-    return gulp.src("Style/app.sass")
+    return gulp.src("style/app.sass")
         .on("error", utils.error("client:style"))
         .pipe(utils.plumber("client:style"))
         .pipe(utils.sass())

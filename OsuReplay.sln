@@ -13,6 +13,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OsuReplay.Resources", "OsuR
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OsuReplay.Utils", "OsuReplay.Utils\OsuReplay.Utils.csproj", "{0F98D579-5D13-40DF-BB4B-CB0F27AB12F3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OsuReplay.Common", "OsuReplay.Common", "{E45D220B-B954-4760-8ACB-A20562A69B91}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

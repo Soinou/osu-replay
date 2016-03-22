@@ -41,8 +41,8 @@ gulp.task("client:style", ["client:bower"], function () {
 
 gulp.task("client:lib", ["client:bower"], function () {
     var files = [
-        "Style/Vendor/jquery/dist/jquery.js",
-        "Style/Vendor/bootstrap/dist/js/bootstrap.js"
+        "style/vendor/jquery/dist/jquery.js",
+        "style/vendor/bootstrap/dist/js/bootstrap.js"
     ];
 
     return gulp.src(files)
@@ -55,8 +55,8 @@ gulp.task("client:lib", ["client:bower"], function () {
 
 gulp.task("client:app", function () {
     var options = {
-        entries: "Client/index.cjsx",
-        paths: ["node_modules", "Client"]
+        entries: "client/index.cjsx",
+        paths: ["node_modules", "client"]
     }
 
     return browserify(options)

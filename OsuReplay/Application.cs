@@ -1,4 +1,6 @@
-﻿using OsuReplay.Configuration;
+﻿using Mono.Unix;
+using Mono.Unix.Native;
+using OsuReplay.Configuration;
 using OsuReplay.Http;
 using OsuReplay.Log;
 using System;
@@ -27,21 +29,30 @@ namespace OsuReplay
 
         public void Start()
         {
-            Console.CancelKeyPress += (object sender, ConsoleCancelEventArgs e) =>
-            {
-                e.Cancel = true;
-                log_.Info("Server interrupted, stopping");
-                server_.Stop();
-            };
-
             log_.Info("Server starting on port " + server_.Port);
 
-            server_.Start();
+            server_.StartListening();
+
+            if (Type.GetType("Mono.Runtime") != null)
+            {
+                UnixSignal.WaitAny(new[] {
+                    new UnixSignal(Signum.SIGINT),
+                    new UnixSignal(Signum.SIGTERM),
+                    new UnixSignal(Signum.SIGQUIT),
+                    new UnixSignal(Signum.SIGHUP)
+                });
+            }
+            else
+            {
+                Console.ReadKey();
+            }
+
+            Stop();
         }
 
         public void Stop()
         {
-            server_.Stop();
+            server_.StopListening();
             log_.Info("Server stopped");
         }
 

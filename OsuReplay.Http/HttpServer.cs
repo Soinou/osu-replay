@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace OsuReplay.Http
@@ -10,9 +11,10 @@ namespace OsuReplay.Http
         public HttpServer()
         {
             listener_ = new HttpListener();
+            middlewares_ = new List<IHttpRequestHandler>();
             Port = 80;
             routes_ = new List<HttpRouteRequestHandler>();
-            middlewares_ = new List<IHttpRequestHandler>();
+            thread_ = new Thread(Run);
         }
 
         public ushort Port
@@ -46,38 +48,36 @@ namespace OsuReplay.Http
 
         public void Listen()
         {
-            while (listener_.IsListening)
+            var context = listener_.GetContext();
+
+            Task.Run(() =>
             {
-                var context = listener_.GetContext();
-                Task.Run(() =>
+                var request = new HttpRequest(context.Request);
+                var response = new HttpResponse(context.Response);
+
+                try
                 {
-                    var request = new HttpRequest(context.Request);
-                    var response = new HttpResponse(context.Response);
-
-                    try
+                    foreach (var middleware in middlewares_)
                     {
-                        foreach (var middleware in middlewares_)
-                        {
-                            middleware.Handle(request, response);
-                        }
+                        middleware.Handle(request, response);
+                    }
 
-                        foreach (var route in routes_)
+                    foreach (var route in routes_)
+                    {
+                        if (route.CanHandle(request))
                         {
-                            if (route.CanHandle(request))
-                            {
-                                request.SetParameters(route.Parameters);
-                                route.Handle(request, response);
-                                break;
-                            }
+                            request.SetParameters(route.Parameters);
+                            route.Handle(request, response);
+                            break;
                         }
                     }
-                    catch (Exception e)
-                    {
-                        if (Error != null)
-                            Error(e, request, response);
-                    }
-                });
-            }
+                }
+                catch (Exception e)
+                {
+                    if (Error != null)
+                        Error(e, request, response);
+                }
+            });
         }
 
         public void Post(string pattern, HttpRequestHandlerDelegate handler)
@@ -85,26 +85,42 @@ namespace OsuReplay.Http
             routes_.Add(new HttpRouteRequestHandler("POST", pattern, handler));
         }
 
-        public void Start()
+        public void Run()
+        {
+            while (running_)
+            {
+                try
+                {
+                    Listen();
+                }
+                catch (ObjectDisposedException)
+                { }
+                catch (HttpListenerException)
+                { }
+            }
+        }
+
+        public void StartListening()
         {
             if (routes_.Count <= 0)
                 throw new InvalidOperationException("Can't start an HttpServer without routes");
 
-            listener_.Start();
-
-            try
+            if (!running_)
             {
-                Listen();
+                running_ = true;
+                listener_.Start();
+                thread_.Start();
             }
-            catch (ObjectDisposedException)
-            { }
-            catch (HttpListenerException)
-            { }
         }
 
-        public void Stop()
+        public void StopListening()
         {
-            listener_.Stop();
+            if (running_)
+            {
+                running_ = false;
+                listener_.Stop();
+                thread_.Join();
+            }
         }
 
         public void Update(string pattern, HttpRequestHandlerDelegate handler)
@@ -128,5 +144,7 @@ namespace OsuReplay.Http
         private List<IHttpRequestHandler> middlewares_;
         private ushort port_;
         private List<HttpRouteRequestHandler> routes_;
+        private bool running_;
+        private Thread thread_;
     }
 }

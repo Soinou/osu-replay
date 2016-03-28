@@ -16,9 +16,9 @@
 
         void Post(string pattern, HttpRequestHandlerDelegate handler);
 
-        void Start();
+        void StartListening();
 
-        void Stop();
+        void StopListening();
 
         void Update(string pattern, HttpRequestHandlerDelegate handler);
 

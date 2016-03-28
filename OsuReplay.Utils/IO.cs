@@ -31,7 +31,7 @@ namespace OsuReplay.Utils
         /// <param name="path">File to check directory of</param>
         public static void EnsureDirectory(string path)
         {
-            if (path.IndexOf(@"\") != -1)
+            if (path.IndexOf(@"\") != -1 || path.IndexOf("/") != -1)
             {
                 DirectoryInfo directory = new DirectoryInfo(Path.GetDirectoryName(path));
 

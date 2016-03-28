@@ -45,8 +45,7 @@ namespace OsuReplay.Log
                     DateTime date = DateTime.Now;
                     string short_date = date.ToString("yyyy-MM-dd");
                     string long_date = date.ToString("yyyy-MM-ddTHH:mm:ss");
-                    string file_name = @"logs\" + name_ + "_" + short_date + ".log";
-                    string path = IO.GetDataPath(file_name);
+                    string file_name = "logs/" + name_ + "_" + short_date + ".log";
 
                     while (messages_.Count > 0)
                     {
@@ -56,7 +55,7 @@ namespace OsuReplay.Log
                         {
                             string long_message = "[" + long_date + "]" + message;
 
-                            IO.Append(path, long_message + Environment.NewLine);
+                            IO.Append(file_name, long_message + Environment.NewLine);
                             Console.Write("[" + long_date + "][");
                             Console.ForegroundColor = message.color;
                             Console.Write(message.status);

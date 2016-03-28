@@ -31,7 +31,7 @@ namespace OsuReplay.Utils
         /// <param name="path">File to check directory of</param>
         public static void EnsureDirectory(string path)
         {
-            if (path.IndexOf(@"\") != -1 || path.IndexOf("/") != -1)
+            if (path.IndexOf("/") != -1)
             {
                 DirectoryInfo directory = new DirectoryInfo(Path.GetDirectoryName(path));
 
@@ -40,18 +40,6 @@ namespace OsuReplay.Utils
                     directory.Create();
                 }
             }
-        }
-
-        /// <summary>
-        /// Gets the full path to a data file ({.exe path}\data\{file_name})
-        /// </summary>
-        /// <param name="file_name">File name</param>
-        /// <returns>Full path</returns>
-        public static string GetDataPath(string file_name)
-        {
-            string app_directory = AppDomain.CurrentDomain.BaseDirectory;
-
-            return Path.Combine(app_directory, "data", file_name);
         }
 
         /// <summary>

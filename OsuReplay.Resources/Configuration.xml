@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<Configuration>
+  <!-- Port number the server will be bound to -->
+  <Integer name="Server.Port"></Integer>
+
+  <!-- Enable/disable the static routes in the application -->
+  <!-- Disable in production if another http server is used for the static files -->
+  <Boolean name="Server.UseStatic"></Boolean>
+
+  <!-- osu! api key: Get one from https://osu.ppy.sh/p/api -->
+  <String name="Osu.Api.Key"></String>
+
+  <!-- osu! irc credentials: Get them from https://osu.ppy.sh/p/irc -->
+  <String name="Osu.Irc.Nickname"></String>
+  <String name="Osu.Irc.Password"></String>
+
+  <!-- Enable/disable the usage of Reids as the store service -->
+  <Boolean name="Store.UseRedis"></Boolean>
+
+  <!-- Redis settings: Used only if UseRedis is true -->
+  <String name="Store.Redis.Host"></String>
+  <Integer name="Store.Redis.Port"></Integer>
+  <Integer name="Store.Redis.Database"></Integer>
+
+  <!-- Enable/disable the usage of Amazon S3 as the storage service -->
+  <Boolean name="Storage.UseS3"></Boolean>
+
+  <!-- Local storage: Used only of UseS3 is false -->
+  <String name="Storage.Local.Directory"></String>
+
+  <!-- Amazon S3 credentials: Used only if UseS3 is true -->
+  <String name="Storage.S3.Access"></String>
+  <String name="Storage.S3.Secret"></String>
+  <String name="Storage.S3.Region"></String>
+  <String name="Storage.S3.Bucket"></String>
+
+  <!-- Log level: 0 = Debug, 1 = Info, 2 = Success, 3 = Warning, 4 = Error, 5 = Fatal -->
+  <!-- Anything strictly below the specified log level will not be displayed -->
+  <!-- WIP -->
+  <Integer name="Log.Level"></Integer>
+</Configuration>

@@ -3,6 +3,7 @@ React = require "react"
 Alert = require "components/bootstrap/alert.cjsx"
 Button = require "components/bootstrap/button.cjsx"
 Control = require "components/control.cjsx"
+Http = require "utils/http.coffee"
 Rules = require "utils/rules.coffee"
 WaitIcon = require "components/wait_icon.cjsx"
 
@@ -12,10 +13,6 @@ module.exports = class Create extends React.Component
 
     constructor: ->
         @state = waiting: false
-
-        @socket_ = io.connect()
-
-        @socket_.on "replays:created", @onSavedReplay
 
     formProps: ->
         className: if @state.waiting then "hidden" else "",
@@ -95,7 +92,10 @@ module.exports = class Create extends React.Component
 
         reader.onload = (upload) =>
             replay.file = upload.target.result
-            @socket_.emit "replays:create", replay
+            console.log "Done lol"
+            Http.post "/api/replays", replay
+            .then (key) => @context.router.push "/replays/" + key
+            .catch (error) => @setState {waiting: false, error: error}
 
         onFile = (value, error) =>
             if error then errors.push error
@@ -113,7 +113,3 @@ module.exports = class Create extends React.Component
             @refs.description.validate onDescription
 
         @refs.title.validate onTitle
-
-    onSavedReplay: (data) =>
-        if data.err? then @setState {waiting: false, error: data.err}
-        else @context.router.push "/replays/" + data.id

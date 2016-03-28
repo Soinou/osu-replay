@@ -1,23 +1,25 @@
 ﻿using OsuReplay.Http;
+using System.IO;
 
 namespace OsuReplay.Controllers
 {
-    internal class StaticController : IController
+    public class StaticController : IHttpController
     {
-        public void Install(IServer server)
+        public void Install(IHttpServer server)
         {
-            server.Get("/js/(.+)", Handle("public/js/"));
-            server.Get("/css/(.+)", Handle("public/css/"));
-            server.Get("/fonts/(.+)", Handle("public/fonts/"));
-            server.Get("/img/(.+)", Handle("public/img/"));
-        }
-
-        private RequestHandlerDelegate Handle(string directory)
-        {
-            return (request, response, next) =>
+            // Match everything
+            server.Get("/(.*)", (request, response) =>
             {
-                response.SendFile(directory + "/" + request.Parameters[1]);
-            };
+                // Try to find a matching file in the public directory
+                var path = "public/" + request.Parameters[1];
+
+                if (File.Exists(path))
+                    // And send it
+                    response.SendFile(path);
+                else
+                    // Or send the index
+                    response.SendFile("public/index.html");
+            });
         }
     }
 }

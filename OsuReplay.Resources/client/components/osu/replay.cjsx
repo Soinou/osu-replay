@@ -24,7 +24,7 @@ module.exports = class OsuReplay extends React.Component
                         <p><b>Description:</b> {@props.replay.description}</p>
                     </div>
                     <Link type="success" to={@props.replay.link} block>Download</Link>
-                    <h5 className="replay-link-text">Replay {@props.replay._id}</h5>
+                    <h5 className="replay-link-text">Replay {@props.id}</h5>
                 </div>
             </div>
         </div>

@@ -13,14 +13,8 @@
     <Filter Include="gulpfile">
       <UniqueIdentifier>{58272f3d-3511-4237-bdb2-ea30247bc648}</UniqueIdentifier>
     </Filter>
-    <Filter Include="build">
-      <UniqueIdentifier>{e5a47ae6-7232-472c-88aa-dcab5716913f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="views\mixins">
       <UniqueIdentifier>{bf6f6d06-389a-4c7c-acc6-97353d9ea7f2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="gulpfile\tasks">
-      <UniqueIdentifier>{1230586c-adc3-4ea8-bd20-fcee48b4bfd2}</UniqueIdentifier>
     </Filter>
     <Filter Include="client\utils">
       <UniqueIdentifier>{12dccac0-1eb1-4d86-8793-66a5a6c6beac}</UniqueIdentifier>
@@ -45,15 +39,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="build.bat">
-      <Filter>build</Filter>
-    </None>
-    <None Include="clean.bat">
-      <Filter>build</Filter>
-    </None>
-    <None Include="start.bat">
-      <Filter>build</Filter>
-    </None>
     <None Include="views\error.jade">
       <Filter>views</Filter>
     </None>
@@ -86,9 +71,6 @@
     </None>
     <None Include="gulpfile.js\utils.js">
       <Filter>gulpfile</Filter>
-    </None>
-    <None Include="gulpfile.js\tasks\client.js">
-      <Filter>gulpfile\tasks</Filter>
     </None>
     <None Include="client\index.cjsx">
       <Filter>client</Filter>
@@ -156,5 +138,14 @@
     <None Include="views\missing.jade">
       <Filter>views</Filter>
     </None>
+    <None Include=".bowerrc" />
+    <None Include="bower.json" />
+    <None Include="package.json" />
+    <None Include="client\utils\http.coffee">
+      <Filter>client\utils</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Configuration.xml" />
   </ItemGroup>
 </Project>

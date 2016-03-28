@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2E5B4C95-141E-43A7-9135-5B57B1292CFB}</ProjectGuid>
+    <ProjectGuid>{7957B3B4-BE0E-4886-9086-DF36C759AB1A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>OsuReplay.Http</RootNamespace>
@@ -32,7 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -45,20 +45,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IController.cs" />
-    <Compile Include="ILayer.cs" />
-    <Compile Include="IRequest.cs" />
-    <Compile Include="IResponse.cs" />
-    <Compile Include="IServer.cs" />
-    <Compile Include="Impl\RequestBase.cs" />
-    <Compile Include="Impl\ResponseBase.cs" />
-    <Compile Include="Impl\LayerBase.cs" />
-    <Compile Include="Route.cs" />
-    <Compile Include="Impl\ServerBase.cs" />
+    <Compile Include="HttpDelegates.cs" />
+    <Compile Include="IHttpClient.cs" />
+    <Compile Include="IHttpController.cs" />
+    <Compile Include="IHttpRequest.cs" />
+    <Compile Include="IHttpRequestHandler.cs" />
+    <Compile Include="IHttpResponse.cs" />
+    <Compile Include="IHttpServer.cs" />
+    <Compile Include="IMiddleware.cs" />
+    <Compile Include="HttpClient.cs" />
+    <Compile Include="HttpMiddlewareBase.cs" />
+    <Compile Include="HttpMiddlewareRequestHandler.cs" />
+    <Compile Include="HttpRequest.cs" />
+    <Compile Include="HttpResponse.cs" />
+    <Compile Include="HttpRestController.cs" />
+    <Compile Include="HttpRouteRequestHandler.cs" />
+    <Compile Include="HttpServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OsuReplay.Utils\OsuReplay.Utils.csproj">
+      <Project>{d3c07b1e-d67a-44a7-8888-945a3e04ccac}</Project>
+      <Name>OsuReplay.Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

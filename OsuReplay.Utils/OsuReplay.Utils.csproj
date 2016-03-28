@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0F98D579-5D13-40DF-BB4B-CB0F27AB12F3}</ProjectGuid>
+    <ProjectGuid>{D3C07B1E-D67A-44A7-8888-945A3E04CCAC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>OsuReplay.Utils</RootNamespace>
@@ -39,6 +39,10 @@
       <HintPath>..\packages\Castle.Windsor.3.3.0\lib\net45\Castle.Windsor.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,19 +53,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="WindsorContainer.cs" />
+    <Compile Include="BinaryReaderExtensions.cs" />
+    <Compile Include="DictionaryExtensions.cs" />
     <Compile Include="IO.cs" />
-    <Compile Include="Logging\ILog.cs" />
-    <Compile Include="Logging\ILogManager.cs" />
-    <Compile Include="Logging\LoggingInstaller.cs" />
-    <Compile Include="Logging\LogImpl.cs" />
-    <Compile Include="Logging\LogManagerImpl.cs" />
+    <Compile Include="JsonBooleanConverter.cs" />
+    <Compile Include="Mime.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShortId.cs" />
+    <Compile Include="WindsorExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

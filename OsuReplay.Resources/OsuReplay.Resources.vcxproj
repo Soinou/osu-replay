@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <None Include="build.bat" />
-    <None Include="clean.bat" />
+    <None Include=".bowerrc" />
+    <None Include="bower.json" />
     <None Include="client\components\bootstrap\alert.cjsx" />
     <None Include="client\components\bootstrap\button.cjsx" />
     <None Include="client\components\bootstrap\link.cjsx" />
@@ -41,11 +41,11 @@
     <None Include="client\pages\404.cjsx" />
     <None Include="client\pages\replays\create.cjsx" />
     <None Include="client\pages\replays\show.cjsx" />
+    <None Include="client\utils\http.coffee" />
     <None Include="client\utils\rules.coffee" />
     <None Include="gulpfile.js\index.js" />
-    <None Include="gulpfile.js\tasks\client.js" />
     <None Include="gulpfile.js\utils.js" />
-    <None Include="start.bat" />
+    <None Include="package.json" />
     <None Include="style\app.sass" />
     <None Include="style\_core.sass" />
     <None Include="style\_fonts.sass" />
@@ -56,6 +56,9 @@
     <None Include="views\index.jade" />
     <None Include="views\missing.jade" />
     <None Include="views\mixins\utils.jade" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Configuration.xml" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{2FF4FDB1-234C-41F6-8403-2FD1ECFE3627}</ProjectGuid>
@@ -102,19 +105,19 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <NMakeBuildCommandLine>build.bat $(Configuration)</NMakeBuildCommandLine>
-    <NMakeOutput>start.bat $(Configuration)</NMakeOutput>
-    <NMakeCleanCommandLine>clean.bat $(Configuration)</NMakeCleanCommandLine>
-    <NMakeReBuildCommandLine>build.bat $(Configuration)</NMakeReBuildCommandLine>
+    <NMakeBuildCommandLine>node node_modules/gulp/bin/gulp --build --$(Configuration)</NMakeBuildCommandLine>
+    <NMakeOutput>node node_modules/gulp/bin/gulp watch --$(Configuration)</NMakeOutput>
+    <NMakeCleanCommandLine>node node_modules/gulp/bin/gulp clean --$(Configuration)</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>node node_modules/gulp/bin/gulp --$(Configuration)</NMakeReBuildCommandLine>
     <NMakePreprocessorDefinitions>WIN32;_DEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
     <OutDir>bin\$(Configuration)\</OutDir>
     <IntDir>bin\$(Configuration)\.tmp\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <NMakeBuildCommandLine>build.bat $(Configuration)</NMakeBuildCommandLine>
-    <NMakeOutput>start.bat $(Configuration)</NMakeOutput>
-    <NMakeCleanCommandLine>clean.bat $(Configuration)</NMakeCleanCommandLine>
-    <NMakeReBuildCommandLine>build.bat $(Configuration)</NMakeReBuildCommandLine>
+    <NMakeBuildCommandLine>node node_modules/gulp/bin/gulp --build --$(Configuration)</NMakeBuildCommandLine>
+    <NMakeOutput>node node_modules/gulp/bin/gulp watch --$(Configuration)</NMakeOutput>
+    <NMakeCleanCommandLine>node node_modules/gulp/bin/gulp clean --$(Configuration)</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>node node_modules/gulp/bin/gulp --$(Configuration)</NMakeReBuildCommandLine>
     <NMakePreprocessorDefinitions>WIN32;NDEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
     <OutDir>bin\$(Configuration)\</OutDir>
     <IntDir>bin\$(Configuration)\.tmp\</IntDir>
@@ -122,18 +125,18 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>bin\$(Configuration)\</OutDir>
     <IntDir>bin\$(Configuration)\.tmp\</IntDir>
-    <NMakeBuildCommandLine>build.bat $(Configuration)</NMakeBuildCommandLine>
-    <NMakeReBuildCommandLine>build.bat $(Configuration)</NMakeReBuildCommandLine>
-    <NMakeCleanCommandLine>clean.bat $(Configuration)</NMakeCleanCommandLine>
-    <NMakeOutput>start.bat $(Configuration)</NMakeOutput>
+    <NMakeBuildCommandLine>node node_modules/gulp/bin/gulp --build --$(Configuration)</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>node node_modules/gulp/bin/gulp --$(Configuration)</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>node node_modules/gulp/bin/gulp clean --$(Configuration)</NMakeCleanCommandLine>
+    <NMakeOutput>node node_modules/gulp/bin/gulp watch --$(Configuration)</NMakeOutput>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>bin\$(Configuration)\</OutDir>
     <IntDir>bin\$(Configuration)\.tmp\</IntDir>
-    <NMakeBuildCommandLine>build.bat $(Configuration)</NMakeBuildCommandLine>
-    <NMakeReBuildCommandLine>build.bat $(Configuration)</NMakeReBuildCommandLine>
-    <NMakeCleanCommandLine>clean.bat $(Configuration)</NMakeCleanCommandLine>
-    <NMakeOutput>start.bat $(Configuration)</NMakeOutput>
+    <NMakeBuildCommandLine>node node_modules/gulp/bin/gulp --build --$(Configuration)</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>node node_modules/gulp/bin/gulp --$(Configuration)</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>node node_modules/gulp/bin/gulp clean --$(Configuration)</NMakeCleanCommandLine>
+    <NMakeOutput>node node_modules/gulp/bin/gulp watch --$(Configuration)</NMakeOutput>
   </PropertyGroup>
   <ItemDefinitionGroup>
   </ItemDefinitionGroup>

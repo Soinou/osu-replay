@@ -1,6 +1,7 @@
 React = require "react"
 
 Alert = require "components/bootstrap/alert.cjsx"
+Http = require "utils/http.coffee"
 Link = require "components/bootstrap/link.cjsx"
 Replay = require "osu/replay.coffee"
 ReplayComponent = require "components/osu/replay.cjsx"
@@ -12,9 +13,9 @@ module.exports = class Show extends React.Component
         @state = {waiting: true, replay: null}
 
     componentDidMount: ->
-        @socket_ = io.connect()
-        @socket_.on "replays:got", @onReplay
-        @socket_.emit "replays:get", @props.params.replayId
+        Http.get "/api/replays/" + @props.params.replayId
+        .then @onReplay
+        .catch @onReplayError
 
     render:->
         if @state.waiting
@@ -31,7 +32,7 @@ module.exports = class Show extends React.Component
                 <Alert type="warning">
                     Keep a save of your link, because if you lose it, you will not be able to get it back.
                 </Alert>
-                <ReplayComponent replay={@state.replay} />
+                <ReplayComponent id={@props.params.replayId} replay={@state.replay} />
                 <div className="jumbotron">
                     <center>
                         <Link type="primary" to="/">Upload another replay</Link>
@@ -41,10 +42,14 @@ module.exports = class Show extends React.Component
                 </div>
             </div>
 
-    onReplay: (replay) =>
-        if not replay? then return @setState {waiting: false}
+    onReplayError: (error) =>
+        @setState {waiting: false, error: error}
 
-        replay = new Replay replay
+    onReplay: (data) =>
+        data = JSON.parse data
+        if not data? then return @setState {waiting: false, replay: null}
+
+        replay = new Replay data
         @setState {waiting: false, replay: replay}
 
         window.disqus_config = () ->

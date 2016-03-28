@@ -1,55 +1,55 @@
 {
-    "name": "osu!replay",
-    "version": "3.0.0",
-    "description": "Website to upload osu! replays and share them easily",
-    "main": "gulpfile.js",
-    "license": "WTFPL",
-    "author": "LemonAdd <lemon.add0@gmail.com>",
-    "contributors": [
-        {
-            "name": "Soinou",
-            "email": "abricot.soinou@gmail.com",
-            "url": "https://github.com/Soinou"
-        },
-        {
-            "name": "Pautau",
-            "email": "dwoaldric@gmail.com",
-            "url": "https://github.com/Pautau"
-        }
-    ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/Soinou/osu-replay"
+  "name": "osu!replay",
+  "version": "3.0.0",
+  "description": "Website to upload osu! replays and share them easily",
+  "main": "gulpfile.js",
+  "license": "WTFPL",
+  "author": "LemonAdd <lemon.add0@gmail.com>",
+  "contributors": [
+    {
+      "name": "Soinou",
+      "email": "abricot.soinou@gmail.com",
+      "url": "https://github.com/Soinou"
     },
-    "bugs": {
-        "url": "https://github.com/Soinou/osu-replay/issues"
-    },
-    "scripts": {
-        "postinstall": "node node_modules/gulp/bin/gulp"
-    },
-    "dependencies": {
-        "bower": "^1.7.7",
-        "browserify": "^13.0.0",
-        "coffee-react": "^4.1.0",
-        "coffee-reactify": "^4.0.0",
-        "collections": "^3.0.0",
-        "fs-extra": "^0.26.7",
-        "gulp": "^3.9.1",
-        "gulp-concat": "^2.6.0",
-        "gulp-if": "^2.0.0",
-        "gulp-jade": "^1.1.0",
-        "gulp-plumber": "^1.1.0",
-        "gulp-sass": "^2.2.0",
-        "gulp-uglify": "^1.5.3",
-        "gulp-util": "^3.0.7",
-        "numeral": "^1.5.3",
-        "promise": "^7.1.1",
-        "react": "^0.14.7",
-        "react-dom": "^0.14.7",
-        "react-router": "^2.0.0",
-        "require-dir": "^0.3.0",
-        "validator": "^5.1.0",
-        "vinyl-buffer": "^1.0.0",
-        "vinyl-source-stream": "^1.1.0"
+    {
+      "name": "Pautau",
+      "email": "dwoaldric@gmail.com",
+      "url": "https://github.com/Pautau"
     }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Soinou/osu-replay"
+  },
+  "bugs": {
+    "url": "https://github.com/Soinou/osu-replay/issues"
+  },
+  "scripts": {},
+  "dependencies": {
+    "bower": "^1.7.7",
+    "browserify": "^13.0.0",
+    "coffee-react": "^4.1.0",
+    "coffee-reactify": "^4.0.0",
+    "collections": "^3.0.0",
+    "fs-extra": "^0.26.7",
+    "fs-extra-promise": "^0.3.1",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-if": "^2.0.0",
+    "gulp-jade": "^1.1.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^2.2.0",
+    "gulp-uglify": "^1.5.3",
+    "gulp-util": "^3.0.7",
+    "numeral": "^1.5.3",
+    "promise": "^7.1.1",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "react-router": "^2.0.0",
+    "require-dir": "^0.3.0",
+    "validator": "^5.1.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "yargs": "^4.3.2"
+  }
 }
